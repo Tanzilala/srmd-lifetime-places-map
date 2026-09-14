@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+<title>Shrimad Rajchandraji — Lifetime Places</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+Gujarati:wght@400;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+<style>
+:root{
+  --ink:#1c1a17; --muted:#6b6459; --line:#ddd7cc; --paper:#f7f5f0; --card:#fffefb;
+  --childhood:#6b5b95; --avadhan:#2e6f9e; --business:#1f7a5a; --retreat:#b07d2b; --final:#8c2f22;
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%}
+body{font-family:"Source Serif 4","Noto Serif Gujarati",Georgia,serif;color:var(--ink);background:var(--paper);
+     -webkit-text-size-adjust:100%}
+#app{display:flex;flex-direction:column;height:100dvh}
+header{padding:10px 14px 8px;background:var(--card);border-bottom:1px solid var(--line);flex:0 0 auto}
+.hrow{display:flex;align-items:flex-start;gap:10px}
+h1{font-size:17px;line-height:1.2;margin:0;font-weight:600;letter-spacing:-.2px}
+h1 small{display:block;font-size:11.5px;font-weight:400;color:var(--muted);letter-spacing:0;margin-top:3px}
+#lang{margin-left:auto;flex:0 0 auto;border:1px solid var(--line);background:var(--paper);border-radius:14px;
+      font:600 11px/1 system-ui,sans-serif;padding:7px 11px;cursor:pointer;color:var(--ink)}
+.controls{display:flex;flex-wrap:wrap;gap:5px;margin-top:9px;align-items:center}
+.chip{border:1px solid var(--line);background:var(--paper);border-radius:13px;padding:5px 10px;
+      font:600 10.5px/1.25 system-ui,sans-serif;cursor:pointer;color:var(--muted);display:flex;align-items:center;gap:5px;
+      white-space:nowrap;max-width:100%}
+.chip .dot{width:8px;height:8px;border-radius:50%;background:currentColor;flex:0 0 auto}
+.chip.on{color:#fff;border-color:transparent}
+.chip.on.childhood{background:var(--childhood)} .chip.on.avadhan{background:var(--avadhan)}
+.chip.on.business{background:var(--business)} .chip.on.retreat{background:var(--retreat)}
+.chip.on.final{background:var(--final)}
+.chip.plain.on{background:var(--ink);color:#fff}
+#main{flex:1 1 auto;position:relative;min-height:0}
+#map{position:absolute;inset:0;background:#e8e4da}
+.leaflet-container{font-family:inherit}
+.leaflet-tile{filter:saturate(.62) brightness(1.04) contrast(.94)}
+#panel{position:absolute;z-index:1000;background:var(--card);overflow-y:auto;
+       box-shadow:0 -6px 28px rgba(0,0,0,.16);display:none}
+#panel.open{display:block}
+@media(max-width:719px){#panel{left:0;right:0;bottom:0;max-height:62%;border-top:1px solid var(--line);
+  border-radius:14px 14px 0 0}}
+@media(min-width:720px){#panel{top:12px;right:12px;bottom:12px;width:370px;border:1px solid var(--line);
+  border-radius:10px;box-shadow:0 8px 34px rgba(0,0,0,.14)}}
+.pbody{padding:16px 18px 26px}
+#close{position:sticky;top:0;float:right;border:0;background:var(--card);font-size:22px;line-height:1;
+       color:var(--muted);cursor:pointer;padding:2px 2px 6px 10px}
+.ptitle{font-size:19px;font-weight:600;margin:0 0 1px;letter-spacing:-.2px}
+.pgu{font-family:"Noto Serif Gujarati",serif;font-size:15px;color:var(--muted);margin:0 0 7px}
+.pmeta{font:400 11.5px/1.5 system-ui,sans-serif;color:var(--muted);margin:0 0 11px}
+.phase-tag{display:inline-block;font:700 9.5px/1 system-ui,sans-serif;letter-spacing:.5px;text-transform:uppercase;
+      color:#fff;padding:4px 8px;border-radius:3px;margin-bottom:9px}
+.work{background:#f3efe4;border-left:3px solid var(--retreat);padding:9px 11px;font-size:13.5px;margin:0 0 11px;
+      font-style:italic}
+.ev{font-size:14.5px;line-height:1.55;margin:0 0 13px}
+h3.sec{font:700 10px/1 system-ui,sans-serif;letter-spacing:.7px;text-transform:uppercase;color:var(--muted);
+       margin:16px 0 7px;padding-bottom:5px;border-bottom:1px solid var(--line)}
+.site{margin:0 0 8px;font-size:13.5px;line-height:1.45}
+.badge{display:inline-block;font:700 8.5px/1 system-ui,sans-serif;letter-spacing:.4px;color:#fff;
+       padding:3px 6px;border-radius:2px;margin-right:6px;vertical-align:1px;white-space:nowrap}
+.ORIG{background:#1f5136}.MEM{background:#8a6a1f}.GONE{background:#8c2f22}.UNID{background:#6a6a6a}
+.site .nm{font-weight:600}
+.site .nt{color:var(--muted);font-size:12.5px}
+.caution{background:#fbf3ef;border-left:3px solid #8c2f22;padding:9px 11px;font-size:12.5px;line-height:1.5;margin:12px 0}
+.src{font-size:11px;color:var(--muted);font-style:italic;margin-top:12px}
+.sitepin{margin:4px 0 0 0;border:1px solid var(--line);background:var(--paper);border-radius:11px;
+         font:600 10.5px/1 system-ui,sans-serif;padding:4px 8px;cursor:pointer;color:#2e6f9e}
+.sitepin:hover{background:#fff;border-color:#2e6f9e}
+.corrnote{display:block;margin-top:12px;font:400 11.5px/1.5 system-ui,sans-serif;color:var(--muted)}
+.corr{display:inline-block;margin-top:12px;font:600 11.5px/1 system-ui,sans-serif;color:#1f7a5a;text-decoration:none;
+      border-bottom:1px solid #b9d6c9;padding-bottom:2px}
+#legend{position:absolute;left:10px;bottom:10px;z-index:900;background:rgba(255,254,251,.94);
+        border:1px solid var(--line);border-radius:8px;padding:9px 11px;font:400 11px/1.5 system-ui,sans-serif;
+        max-width:190px}
+#legend b{display:block;font-size:9.5px;letter-spacing:.6px;text-transform:uppercase;color:var(--muted);margin-bottom:5px}
+#legend div.l{display:flex;align-items:center;gap:6px;margin-bottom:2px}
+#legend i{width:9px;height:9px;border-radius:50%;flex:0 0 auto}
+@media(max-width:719px){#legend{display:none}}
+#count{font:400 11px/1 system-ui,sans-serif;color:var(--muted);margin-left:auto;white-space:nowrap}
+.chip .sm{display:none}
+.chip .yr{opacity:.7}
+@media(max-width:560px){
+  html,body{overflow-x:hidden}
+  .chip{white-space:normal;font-size:10px;padding:5px 9px}
+  .chip .lg{display:none} .chip .sm{display:inline}
+  #count{margin-left:0;flex-basis:100%;padding-top:1px}
+  h1{font-size:15.5px}
+  h1 small{font-size:11px}
+  header{padding:9px 12px 7px}
+  .controls{margin-top:7px;gap:4px}
+}
+footer{flex:0 0 auto;background:var(--card);border-top:1px solid var(--line);padding:8px 14px;
+       font:400 10.5px/1.45 system-ui,sans-serif;color:var(--muted)}
+footer a{color:var(--muted)}
+.openq{border:1px dashed var(--line);border-radius:7px;padding:10px 12px;font-size:12.5px;line-height:1.5;
+       background:#fbfaf7;margin-top:12px}
+.marker-dot{border-radius:50%;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.35)}
+</style>
+</head>
+<body>
+<div id="app">
+  <header>
+    <div class="hrow">
+      <h1>Shrimad Rajchandraji — Lifetime Places
+        <small>Where Param Krupalu Dev is documented to have travelled, stayed and lived, 1867&ndash;1901</small></h1>
+      <button id="lang" type="button">ગુજરાતી</button>
+    </div>
+    <div class="controls" id="phasebar"></div>
+    <div class="controls">
+      <button class="chip plain" data-only="ORIG" type="button">Only what still stands</button>
+      <button class="chip plain" data-only="WORK" type="button">Where the works were composed</button>
+      <span id="count"></span>
+    </div>
+  </header>
+  <div id="main">
+    <div id="map"></div>
+    <div id="legend"></div>
+    <aside id="panel"><div class="pbody"><button id="close" type="button">&times;</button><div id="pc"></div></div></aside>
+  </div>
+  <footer>
+    Independently compiled by a devotee &middot; not an official publication of SRMD, the Shrimad Rajchandra Trust,
+    Raj Saubhag Satsang Mandal or any other organisation. A place is shown only where a published source explicitly
+    places Him there in His lifetime; modern centres bearing His name are not treated as proof of a visit.
+    <span id="unpinned"></span>
+  </footer>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script>
+const DATA = {"phases": [["childhood", "Vavania & childhood", "1867–1883", "#6b5b95", "Childhood"], ["avadhan", "The avadhan years", "1883–1887", "#2e6f9e", "Avadhan"], ["business", "Mumbai & the travel years", "1888–1894", "#1f7a5a", "Travel years"], ["retreat", "The years of retreat", "1895–1899", "#b07d2b", "Retreat"], ["final", "Final illness & Rajkot", "1900–1901", "#8c2f22", "Final"]], "places": [{"id": 1, "en": "Vavania", "gu": "વવાણિયા", "alt": "Vavaniya, Vavania Bandar", "district": "Maliya-Miyana taluka, Morbi district", "state": "Gujarat", "lat": 23.00552, "lng": 70.61034, "pin": "Medium", "period": "VS 1924–1957 (1867–1901)", "from": 1867, "to": 1901, "phase": "childhood", "evidence": "Birthplace. Childhood jatismaran-jnan at the crematorium c. 1875. Repeated lifetime stays; Paryushan VS 1951 (1894–95); Apurva Avsar composed here VS 1953 (1896–97); named in the VS 1946, 1947, 1951, 1953, 1954, 1955 and 1956 travel entries; last recorded stay VS 1956 (1900).", "warn": "The Trust's own Vavaniya page carries no Vavania entries at all — its rows are mis-filed Uttarsanda content. Vavania is the least-documented major site on the Trust website, not the best.", "src": "SRMD life; Raj Saubhag Jatra report 2016", "work": "Apurva Avsar Evo Kyare Avshe? — composed here, VS 1953 (1896–97)", "sites": [{"name": "Shrimad Rajchandra Janma Bhuvan (birth house)", "status": "UNID", "note": "Standing complex; no source states how much of the original house survives"}, {"name": "Rambai Mandir, within the Janma Bhuvan complex", "status": "MEM", "note": "Reported by Raj Saubhag; origin status not stated"}, {"name": "Guru Mandir (idol of Param Krupalu Dev)", "status": "MEM", "note": "Idol installation is necessarily post-1901"}, {"name": "Crematorium / lake area of the jatismaran-jnan", "status": "ORIG", "note": "Natural feature; located by SRMD, exact point not pinned"}]}, {"id": 2, "en": "Morbi", "gu": "મોરબી", "alt": "Morvi", "district": "Morbi district", "state": "Gujarat", "lat": 22.8177, "lng": 70.8346, "pin": "High", "period": "VS 1940–1957 (1883–1901)", "from": 1883, "to": 1901, "phase": "avadhan", "evidence": "First ashtavadhan (eight simultaneous tasks) performed here VS 1940 (1883–84). Marriage to Jhabakbai, 1888. Met Sobhagbhai here VS 1946 (1889–90). Named in the VS 1945, 1952, 1955, 1956 and 1957 entries; a two-month stay is recorded in 1900.", "warn": "", "src": "Trust – Vavaniya/Morbi; SRMD life; jainQQ chronology", "work": "", "sites": [{"name": "Market of Morbi (faith-testing by Judge Dharshibhai)", "status": "UNID", "note": "An area, not a pinned structure"}, {"name": "Marriage premises", "status": "UNID", "note": "Named by Raj Saubhag; no address published"}, {"name": "Residence of Shri Vinaychand Popatlal Daftari", "status": "UNID", "note": "Trust page's name and description do not match"}]}, {"id": 3, "en": "Rajkot", "gu": "રાજકોટ", "alt": "", "district": "Rajkot district", "state": "Gujarat", "lat": 22.3, "lng": 70.7833, "pin": "High", "period": "VS 1957 (1900–01); childhood visits", "from": 1900, "to": 1901, "phase": "final", "evidence": "Final residence. Deh Vilay (departure from the body) on Chaitra Vad 5, VS 1957 — Tuesday 9 April 1901, at about 2 pm. Cremation at the Hindusmashan near Ramnathpura on the bank of the Aaji.", "warn": "", "src": "Trust – Rajkot/Sayla; SRMD life; jainQQ", "work": "", "sites": [{"name": "Narmada Mansion / Samadhi Bhavan", "status": "ORIG", "note": "The room of the Deh Vilay; the Trust names it but never states it is preserved"}, {"name": "Param Samadhi Mandir at the Aaji riverbank cremation ground", "status": "MEM", "note": "Temple built at the original cremation ground; no build year published"}, {"name": "Shrimad Rajchandra Gyan Mandir, opposite Akashvani", "status": "MEM", "note": "Modern swadhyay hall, no lifetime event"}]}, {"id": 4, "en": "Jamnagar", "gu": "જામનગર", "alt": "Navanagar", "district": "Jamnagar district", "state": "Gujarat", "lat": 22.4732, "lng": 70.0552, "pin": "High", "period": "VS 1941 (1884–85)", "from": 1884, "to": 1885, "phase": "avadhan", "evidence": "12- and 16-avadhan performances, per the jainQQ chronology and SRMD's Shatavdhani article.", "warn": "Venue disputed. Wikipedia assigns the 12-avadhan to Morbi and the 16-avadhan to Wadhwan Camp; SRMD gives Jamnagar for both plus Wadhwan. The three accounts are incompatible and none should be asserted alone.", "src": "jainQQ chronology; SRMD", "work": "", "sites": [{"name": "Historical avadhan venue", "status": "UNID", "note": "No source names the hall"}]}, {"id": 5, "en": "Botad", "gu": "બોટાદ", "alt": "", "district": "Botad district", "state": "Gujarat", "lat": 22.1686, "lng": 71.6685, "pin": "High", "period": "VS 1941 (1884–85), aged about 18", "from": 1884, "to": 1885, "phase": "avadhan", "evidence": "The 52-avadhan performance, held in a private gathering — including chopat and cards with three players each, chess, and composing verses on eight subjects.", "warn": "", "src": "jainQQ chronology; Wikipedia; SRMD Shatavdhani article", "work": "", "sites": [{"name": "Historic avadhan venue", "status": "UNID", "note": "No day, month or address is recorded in any source"}]}, {"id": 6, "en": "Mumbai", "gu": "મુંબઈ", "alt": "Bombay", "district": "Mumbai City", "state": "Maharashtra", "lat": 18.951808, "lng": 72.830697, "pin": "High (Zaveri Bazaar anchor)", "period": "VS 1943–1957 (1886–1901)", "from": 1886, "to": 1901, "phase": "business", "evidence": "Shatavadhan (100 simultaneous tasks) at the Sir Framji Cawasji Institute on 22 January 1887, aged 19 — the single best-attested date of his life. Jewellery business from VS 1945 (1888–89) with Revashankar Jagjivandas Mehta. First meeting with Mahatma Gandhi, July 1891, on the day Gandhi returned from England. Chaturmas with Lalluji Munishri VS 1949 (1892–93). Named in the VS 1947, 1949, 1951, 1953, 1954, 1955 and 1957 entries.", "warn": "", "src": "SRMD life; Wikipedia; Gandhi's own account", "work": "", "sites": [{"name": "Zaveri Bazaar / Bhuleshwar business quarter", "status": "ORIG", "note": "Locality survives; the specific premises are not identified"}, {"name": "Sir Framji Cawasji Institute, Dhobi Talao", "status": "ORIG", "note": "Site of the Shatavadhan, 22 January 1887. The building survives as Framji Cowasji Hall at Anandilal Podar Marg, Dhobi Talao, Kalbadevi 400002, opposite Metro Cinema. No source publishes a coordinate for the building; the pin is the centre of Anandilal Podar Marg as mapped in OpenStreetMap, about 1 km south-west of the Zaveri Bazaar anchor this site previously inherited. The entrance itself is still unverified.", "lat": 18.94299, "lng": 72.828, "pin": "Street-level"}, {"name": "Matunga and Sion/Shiv late-life health stays", "status": "UNID", "note": "Named in Edition 1; no source located"}]}, {"id": 7, "en": "Ahmedabad", "gu": "અમદાવાદ", "alt": "", "district": "Ahmedabad district", "state": "Gujarat", "lat": 23.0225, "lng": 72.57139, "pin": "High", "period": "VS 1944–1957 (1887–1901)", "from": 1887, "to": 1901, "phase": "business", "evidence": "Met Juthabhai VS 1944 (1887–88). Fifteen-day stay at Jesangbhai Sheth's residence VS 1945 (1888–89) — the earliest dated stay on the Trust register. Named in the VS 1945, 1955 and 1957 entries. In VS 1957 (1900–01), during the final illness, He stayed at the Aga Khan's bungalow with His mother and wife before moving to Wadhwan Camp.", "warn": "", "src": "Trust – Ahmedabad/Naroda; Wikipedia; jainQQ", "work": "", "sites": [{"name": "Residence of Shri Jesangbhai Sheth", "status": "ORIG", "note": "15-day stay VS 1945; no preservation claim published"}, {"name": "Hathising ni Vaadi — small room above the main gate", "status": "ORIG", "note": "A private residence, not the Hutheesing temple; do not conflate the two"}, {"name": "Building in Ghanchi's Pol, old city", "status": "ORIG", "note": "Pol confirmed to exist; no street or coordinate published"}, {"name": "Saraspur Upashray", "status": "ORIG", "note": "Ambalalbhai went there on His instruction; He was not present"}, {"name": "Aga Khan's Bungalow", "status": "UNID", "note": "The Trust's Ahmedabad-Naroda register states that in VS 1957 Shrimadji stayed here with His mother and wife, and gives no address. No independent source was found that locates the bungalow or says whether it still stands. Status left as not located rather than guessed at."}, {"name": "Lal Bungalow / Rajnagar Subodhak Pustakalay", "status": "MEM", "note": "Built by Jesangbhai in memory of Juthabhai; year unpublished"}]}, {"id": 8, "en": "Bharuch", "gu": "ભરૂચ", "alt": "Broach", "district": "Bharuch district", "state": "Gujarat", "lat": 21.712, "lng": 72.993, "pin": "High", "period": "VS 1945 (1888–89)", "from": 1888, "to": 1889, "phase": "business", "evidence": "Named in the VS 1945 travel entry alongside Ahmedabad, Surat and Morbi.", "warn": "", "src": "Trust – Tithal/Dharampur/Bharuch; jainQQ", "work": "", "sites": [{"name": "Residence of Shri Anupchand Malukchand", "status": "ORIG", "note": "Anupchand requested Samadhi Maran of Him here"}, {"name": "Crematory frequented for meditation", "status": "ORIG", "note": "A ground; exact point not pinned"}, {"name": "Shri Samali Vihar Jinmandir", "status": "ORIG", "note": "Listed by the Trust as historical; no lifetime event stated"}]}, {"id": 9, "en": "Surat", "gu": "સુરત", "alt": "", "district": "Surat district", "state": "Gujarat", "lat": 21.205, "lng": 72.84, "pin": "High", "period": "VS 1945 (1888–89)", "from": 1888, "to": 1889, "phase": "business", "evidence": "Named in the VS 1945 travel entry. Interaction with monks recorded in the biography.", "warn": "", "src": "jainQQ chronology", "work": "", "sites": [{"name": "Historic site not identified", "status": "UNID", "note": "No Trust page covers Surat"}]}, {"id": 10, "en": "Sayla", "gu": "સાયલા", "alt": "", "district": "Sayla taluka, Surendranagar district", "state": "Gujarat", "lat": 22.55, "lng": 71.483, "pin": "High", "period": "VS 1946, 1951, 1953 (1889–97)", "from": 1889, "to": 1897, "phase": "business", "evidence": "Home of Sobhagbhai, His closest lay devotee, who was 44 years his senior. Six days with Ambalalbhai here VS 1946 (1889–90); stayed with Sobhagbhai VS 1953 (1896–97). It was at Sobhagbhai's request that the Atmasiddhi Shastra was composed.", "warn": "A bare geocode of 'Sayla' resolves to Sayla in Jalore district, Rajasthan. Always pin against Surendranagar.", "src": "Trust – Rajkot/Sayla; jainQQ; Raj Saubhag", "work": "", "sites": [{"name": "Sobhagbhai's residence, now Nutan Bhaktigruh", "status": "GONE", "note": "The Trust's wording is 'converted into' — the plot is original, the building repurposed"}, {"name": "Shri Raj Sobhag Ashram", "status": "MEM", "note": "The Trust states the residence 'has been recreated in its original form' — a reconstruction, not the house"}]}, {"id": 11, "en": "Khambhat", "gu": "ખંભાત", "alt": "Cambay, Trambavati Nagari", "district": "Khambhat taluka, Anand district", "state": "Gujarat", "lat": 22.3167, "lng": 72.6243, "pin": "High", "period": "VS 1946–1952 (1889–96)", "from": 1889, "to": 1896, "phase": "business", "evidence": "Diwali with Lalluji Munishri VS 1946 (1889–90). Eighteen-day stay at the Subodhak Pustakalay. Named in the VS 1951 and 1952 entries. Lalluji Muni (later Prabhu Shriji / Laghuraj Swami) first met Him alone here.", "warn": "", "src": "Trust – Ralej/Vadva/Khambhat; jainQQ", "work": "", "sites": [{"name": "Shri Ambalalbhai's house and room", "status": "ORIG", "note": "The Trust states it is 'preserved in its original condition' — one of only two explicit originality claims on the whole site"}, {"name": "Shri Subodhak Pustakalay", "status": "ORIG", "note": "Founded on His own instruction during His lifetime; 18-day stay; no year published"}, {"name": "Sthanakvasi Upashray, third floor", "status": "ORIG", "note": "Where Lalluji Muni first met Him in solitude"}, {"name": "Jain temple near Ambalalbhai's house", "status": "ORIG", "note": "Frequented by Him"}, {"name": "Shri Chotalal Kapurchand house", "status": "UNID", "note": "The recorded event involves Ambalalbhai, not necessarily Him in person"}]}, {"id": 12, "en": "Muli", "gu": "મૂળી", "alt": "", "district": "Muli taluka, Surendranagar district", "state": "Gujarat", "lat": 22.638808, "lng": 71.458039, "pin": "High", "period": "VS 1946 (1889–90)", "from": 1889, "to": 1890, "phase": "business", "evidence": "Named at the end of the VS 1946 travel entry.", "warn": "A bare geocode of 'Muli' resolves to Muli Tibetan Autonomous County, Sichuan, China.", "src": "jainQQ chronology", "work": "", "sites": [{"name": "Historic site not identified", "status": "UNID", "note": ""}]}, {"id": 13, "en": "Ralej", "gu": "રાલેજ", "alt": "Ralaj, Raalaj", "district": "Khambhat taluka, Anand district", "state": "Gujarat", "lat": 22.299877, "lng": 72.68147, "pin": "Medium", "period": "VS 1947, 1952 (1890–96)", "from": 1890, "to": 1896, "phase": "business", "evidence": "Named in the VS 1947 entry; Paryushan of VS 1952 (1895–96) kept here. Four major poetic works composed during this period. He sat under a banyan by the lakeshore and spoke on religion and ethics.", "warn": "Edition 1 placed Ralej in Petlad taluka. It is in Khambhat taluka. The memorial sits about 500 m outside the village centroid, so the village pin and the shrine pin are not the same point.", "src": "Trust – Ralej/Vadva/Khambhat; jainQQ", "work": "Four major poetic works composed during the VS 1952 Paryushan", "sites": [{"name": "Shrimad Rajchandra Smruti Sthal", "status": "MEM", "note": "The Trust records it as 500 m from Ralej village; direction unspecified"}, {"name": "Banyan and lakeshore where He sat", "status": "ORIG", "note": "Natural features"}, {"name": "Parsi Bungalow / Karuna Vrushti Smarak", "status": "UNID", "note": "Named in Edition 1; not found on Trust pages"}]}, {"id": 14, "en": "Vadodara", "gu": "વડોદરા", "alt": "Baroda", "district": "Vadodara district", "state": "Gujarat", "lat": 22.3, "lng": 73.2, "pin": "High", "period": "VS 1949 (1892–93)", "from": 1892, "to": 1893, "phase": "business", "evidence": "Paryushan kept at Vadodara in VS 1949.", "warn": "Mapcarta serves a Vadodara coordinate roughly 90 km off, near Gandhinagar. Use the Wikipedia value.", "src": "jainQQ chronology", "work": "", "sites": [{"name": "Historic site not identified", "status": "UNID", "note": ""}]}, {"id": 15, "en": "Hadmatiya", "gu": "હડમતીયા", "alt": "Hadmatia", "district": "UNRESOLVED — at least 15 villages of this name exist in Gujarat", "state": "Gujarat", "lat": null, "lng": null, "pin": "Unresolved", "period": "VS 1951 (1894–95)", "from": 1894, "to": 1895, "phase": "business", "evidence": "Named in the VS 1951 travel entry between Sayla and Dharmaj.", "warn": "Fifteen census villages named Hadmatiya were found across Rajkot, Morbi, Jamnagar, Devbhumi Dwarka, Amreli, Bhavnagar, Junagadh, Gir Somnath, Sabarkantha and Mahisagar districts. None is in Surendranagar or Anand, so the travel route does not disambiguate it. The Tankara (Morbi district) candidate is the most plausible on geography alone, but that is inference, not evidence. Both Wikipedia articles titled Hadmatiya contradict themselves on district. Do not pin this until a Gujarati primary source names the district. OpenStreetMap holds only three nodes of the name in Gujarat — Hadmatiya in Paddhari taluka, Rajkot district (22.43352, 70.48005), which also has a railway station of that name on the Rajkot–Wankaner line; a Hadmatiya at 24.64183, 72.68557 in the north; and a Hadmatia locality at 20.71343, 70.87421. None of the three is attested as His Hadmatiya, and the census count is far higher than three, so this only narrows where to look next.", "src": "jainQQ chronology", "work": "", "sites": [{"name": "Location not identified", "status": "UNID", "note": ""}]}, {"id": 16, "en": "Dharmaj", "gu": "ધર્મજ", "alt": "", "district": "Petlad taluka, Anand district", "state": "Gujarat", "lat": 22.41667, "lng": 72.8, "pin": "High", "period": "VS 1951 (1894–95)", "from": 1894, "to": 1895, "phase": "business", "evidence": "Named in the VS 1951 travel entry.", "warn": "A second Dharmaj exists in Chhota Udepur district.", "src": "jainQQ chronology", "work": "", "sites": [{"name": "Historic site not identified", "status": "UNID", "note": ""}]}, {"id": 17, "en": "Virsad", "gu": "વિરસદ", "alt": "Veersad", "district": "Borsad taluka, Anand district", "state": "Gujarat", "lat": 22.38821, "lng": 72.77704, "pin": "High", "period": "VS 1951 (1894–95)", "from": 1894, "to": 1895, "phase": "business", "evidence": "Named in the VS 1951 travel entry. The biography records an incident involving wild bulls here.", "warn": "", "src": "jainQQ chronology", "work": "", "sites": [{"name": "Historic site not identified", "status": "UNID", "note": ""}]}, {"id": 18, "en": "Undel", "gu": "ઉંડેલ", "alt": "", "district": "Khambhat taluka, Anand district", "state": "Gujarat", "lat": 22.335925, "lng": 72.693121, "pin": "Medium", "period": "VS 1951 (1894–95)", "from": 1894, "to": 1895, "phase": "business", "evidence": "Named in the VS 1951 travel entry.", "warn": "Edition 1 implied Petlad taluka; it is Khambhat taluka. Three villages named Undel exist in Madhya Pradesh and a bare geocode returns those.", "src": "jainQQ chronology", "work": "", "sites": [{"name": "Historic site not identified", "status": "UNID", "note": ""}]}, {"id": 19, "en": "Kathor", "gu": "કઠોર", "alt": "", "district": "Kamrej taluka, Surat district", "state": "Gujarat", "lat": 21.288457, "lng": 72.94037, "pin": "High", "period": "VS 1951 (1894–95)", "from": 1894, "to": 1895, "phase": "business", "evidence": "Closing entry of the VS 1951 travel sequence. He stayed upstairs in the Upashray; association with monks recorded.", "warn": "", "src": "jainQQ chronology", "work": "", "sites": [{"name": "Historical Upashray", "status": "UNID", "note": "Not covered by any Trust page"}]}, {"id": 20, "en": "Kavitha", "gu": "કવીઠા", "alt": "", "district": "Borsad taluka, Anand district", "state": "Gujarat", "lat": 22.441654, "lng": 72.872057, "pin": "Medium", "period": "VS 1952, 1954 (1895–98)", "from": 1895, "to": 1898, "phase": "retreat", "evidence": "Named in the VS 1952 entry; the Paryushan of VS 1954 (1897–98) kept here. A major retreat with daily discourses and long periods of meditation in the fields and groves around the village.", "warn": "Edition 1 placed Kavitha in Khambhat taluka; it is Borsad taluka. English Wikipedia's infobox for Kavitha gives 21.500N 74.133E, which is roughly 180 km away on the Maharashtra/MP border and is wrong.", "src": "Trust – Kavitha; SRMD life; jainQQ", "work": "", "sites": [{"name": "Residence of Shri Zaverchand Sheth", "status": "ORIG", "note": "Private residence where Ambalalbhai cooked and served Him"}, {"name": "Gamot Vad (banyan)", "status": "ORIG", "note": "He sat and preached beneath it"}, {"name": "Vijali Mata no Vad (banyan)", "status": "ORIG", "note": "Meditation site"}, {"name": "Dhainia no Vad (banyan)", "status": "ORIG", "note": "Meditation site"}, {"name": "Mithuji no Kuvo (well)", "status": "ORIG", "note": "Meditation site"}, {"name": "Shamal Dosa nu Khetar (field)", "status": "ORIG", "note": "Meditation site"}, {"name": "Shrimad Rajchandra Mandir", "status": "MEM", "note": "Built after 1901 under Prabhu Shriji's direction"}, {"name": "Mahudi Memorial", "status": "UNID", "note": "The Trust entry reads only 'To be updated'"}]}, {"id": 21, "en": "Vadva", "gu": "વડવા", "alt": "Vadava", "district": "Metpur, Khambhat taluka, Anand district", "state": "Gujarat", "lat": 22.3105, "lng": 72.6359, "pin": "Medium", "period": "VS 1952 (1895–96)", "from": 1895, "to": 1896, "phase": "retreat", "evidence": "Fifteen-day stay. He lived in a small room outside a temple beside a stepwell, and preached under the banyan. He indicated a nearby hill as 'golden land' and said a temple of Chandraprabhu Swami would be built there.", "warn": "A separate Vadva exists as a locality of Bhavnagar city, about 300 km away. Also: the Trust records the Chandraprabhu Swami prediction but does not state the predicted temple was ever built — do not assert that it was.", "src": "Trust – Ralej/Vadva/Khambhat; Trust – Places around Vadva", "work": "", "sites": [{"name": "The room beside the stepwell", "status": "ORIG", "note": "The Trust describes it as His home for 15 days; no preservation claim made"}, {"name": "The Vaav (stepwell)", "status": "ORIG", "note": "Structural feature of His lifetime"}, {"name": "The Vad (banyan) where He preached", "status": "ORIG", "note": "Natural feature"}, {"name": "Shrimad Rajchandra Ashram / Raj Kutir", "status": "MEM", "note": "Modern complex built around the room; no year published"}]}, {"id": 22, "en": "Anand", "gu": "આણંદ", "alt": "", "district": "Anand taluka, Anand district", "state": "Gujarat", "lat": 22.556, "lng": 72.951, "pin": "High", "period": "VS 1952 (1895–96)", "from": 1895, "to": 1896, "phase": "retreat", "evidence": "Named in the VS 1952 travel entry.", "warn": "", "src": "jainQQ chronology", "work": "", "sites": [{"name": "Historic site not identified", "status": "UNID", "note": ""}]}, {"id": 23, "en": "Nadiad", "gu": "નડીઆદ", "alt": "Nadiyad", "district": "Nadiad taluka, Kheda district", "state": "Gujarat", "lat": 22.69, "lng": 72.86, "pin": "High", "period": "VS 1952, 1957 (1896 and 1900–01)", "from": 1896, "to": 1901, "phase": "retreat", "evidence": "On the evening of Aso Vad Ekam, VS 1952 — 22 October 1896, the day after Sharad Purnima — He composed the Shri Atmasiddhi Shastra, all 142 verses, at a single sitting, at Sobhagbhai's request, with Ambalalbhai holding the lantern. Revisited in VS 1957 (1900–01). This is, by most reckonings, the most significant single location of His life.", "warn": "Wikipedia's Atma Siddhi article cites 31-3-1888. That is the date of the underlying letter to Lalluji Maharaj, not the composition date. Do not conflate them.", "src": "Trust – Nadiad/Uttarsanda; SRMD life", "work": "Shri Atmasiddhi Shastra — 142 verses at a single sitting, 22 October 1896", "sites": [{"name": "Nana Kumbhdev Mahadev", "status": "ORIG", "note": "The Trust is the only source that names the building; SRMD says only 'in Nadiad'"}, {"name": "Shri Dahyabhai Desai's house", "status": "MEM", "note": "The recorded event is Prabhu Shriji's, after 1901 — not a lifetime site"}]}, {"id": 24, "en": "Rajpur", "gu": "રાજપુર", "alt": "Rajpura", "district": "Khambhat taluka, Anand district", "state": "Gujarat", "lat": null, "lng": null, "pin": "Identified, not pinned", "period": "VS 1952 (1895–96)", "from": 1895, "to": 1896, "phase": "retreat", "evidence": "Named in the VS 1952 travel entry between Nadiad and Limbdi.", "warn": "Newly identified in this edition. A village named Rajpur sits in the Khambhat taluka roster inside the 'Ralaj-Rajpura' gram panchayat, paired with Ralej and neighbouring Metpur — precisely the Ralej–Vadva–Khambhat cluster of the same travel entry. Population 519. No gazetteer publishes its coordinates, so it is identified but not yet pinned. This is not the Rajmandir Ashram site, and not Rajpur in Barwani, MP. Village-directory and census listings add that Rajpur lies about 9 km from Khambhat town, covers 2,444.88 hectares and carries pincode 388640 — a constraint tight enough to identify the village on the ground, but still not a published coordinate.", "src": "jainQQ chronology; census 2011 Khambhat taluka roster", "work": "", "sites": [{"name": "Location not identified", "status": "UNID", "note": ""}]}, {"id": 25, "en": "Limbdi", "gu": "લીંબડી", "alt": "Limdi", "district": "Limbdi taluka, Surendranagar district", "state": "Gujarat", "lat": 22.568472, "lng": 71.794944, "pin": "High", "period": "VS 1952 (1895–96); final illness period", "from": 1895, "to": 1896, "phase": "retreat", "evidence": "Named in the VS 1952 travel entry. Associated with the Limdi Guesthouse during the final illness and with the Wadhwan circuit photographs.", "warn": "Do not confuse with Limdi in Santrampur taluka, Mahisagar district.", "src": "jainQQ chronology", "work": "", "sites": [{"name": "Limdi Guesthouse", "status": "UNID", "note": "Named in Edition 1; not found on Trust pages"}]}, {"id": 26, "en": "Idar", "gu": "ઇડર", "alt": "Eedar, Idargadh", "district": "Idar taluka, Sabarkantha district", "state": "Gujarat", "lat": 23.839, "lng": 73.002, "pin": "High", "period": "VS 1952–1955 (1895–99); four visits", "from": 1895, "to": 1899, "phase": "retreat", "evidence": "Four documented visits: first in VS 1952 (1895–96) for ten days; again in Vaishakh VS 1953 (April–May 1897) staying with Sobhagbhai; a three-month retreat beginning Magshar Sud 2, VS 1955 (Nov/Dec 1898); and a further twelve days later that year. On a giant rock He recited the first gatha of the third chapter of the Uttaradhyayan Sutra and the whole Dravyasangrah to seven monks, and declared the slab Pudhavi Sheela — Siddhsheela, the abode of the liberated.", "warn": "The Viharbhuvan's own history page dates it to VS 1966 (1909–10) and states it was built on the original rock. The rock is a lifetime site; the building over it is not. The paduka, the Sumatinath idol and the paintings are all later installations. Separately, SRMD's 2023 Dharmayatra report names four further Idar sites — Mahakaleshwar, Chandaneshwar and Khokhanath Mahadev and Ramdwar Mandir — as places where He performed spiritual practices, but gives no lifetime detail; these are 2023 portrait installations at claimed sites.", "src": "Trust – Idar; Trust – Idar Ashram History; SRMD", "work": "", "sites": [{"name": "Pudhavi Sheela (the rock)", "status": "ORIG", "note": "The rock itself; the Viharbhuvan was later built directly upon it"}, {"name": "Bhurabawa ni Gufa (cave)", "status": "ORIG", "note": "He stayed in the cave about six weeks; cave, lake and cremation ground"}, {"name": "Shrimad Rajchandra Vihar Bhavan / Nutan Jain Mandir", "status": "MEM", "note": "Built VS 1966 (1909–10) by Shri Girdharbhai, son of Mansukhbhai Devshi of Limbdi — eight years after His passing"}, {"name": "Sadguru Prasad (Shri Guru Mandir)", "status": "MEM", "note": "Built at the place where He gave the Dravyasangrah discourse"}, {"name": "Shwetambar and Digambar hill temples", "status": "ORIG", "note": "Pre-existing temples on the Idar hill"}, {"name": "Ghantiya Pahad (the hill itself)", "status": "ORIG", "note": "Natural feature. The Trust places the ashram on the Ghantiya hill at Barvav, roughly 2 km from Idar town on a small rocky hill. Neither the hill nor Barvav is in OpenStreetMap, and no gazetteer coordinate was found, so it still inherits the Idar pin."}, {"name": "Kanvanath Mahadev; Ramanlal ni Chauki; Rukhi Raani nu Maaliyu", "status": "UNID", "note": "Named by the Trust without description"}, {"name": "Chandraprabhu Swami Deri", "status": "MEM", "note": "Paduka installed 'later on', after VS 1966"}]}, {"id": 27, "en": "Viramgam", "gu": "વિરમગામ", "alt": "", "district": "Viramgam taluka, Ahmedabad district", "state": "Gujarat", "lat": 23.12, "lng": 72.03, "pin": "High", "period": "VS 1953, 1955 (1896–99)", "from": 1896, "to": 1899, "phase": "retreat", "evidence": "Named in the VS 1953 and VS 1955 travel entries.", "warn": "", "src": "jainQQ chronology", "work": "", "sites": [{"name": "Historic site not identified", "status": "UNID", "note": ""}]}, {"id": 28, "en": "Naroda", "gu": "નરોડા", "alt": "", "district": "Ahmedabad district (now a suburb of Ahmedabad)", "state": "Gujarat", "lat": 23.083, "lng": 72.667, "pin": "Medium-High", "period": "VS 1955 (1898–99)", "from": 1898, "to": 1899, "phase": "retreat", "evidence": "Named in the VS 1955 travel entry. Edition 1 recorded a four-month monsoon period at the Naroda Upashray.", "warn": "Edition 1 attributed the four-month Naroda chaturmas to Shrimadji. The Trust attributes it to Prabhu Shriji (Laghuraj Swami), who outlived Him by 35 years. This needs adjudication before the claim is repeated.", "src": "Trust – Ahmedabad/Naroda; jainQQ", "work": "", "sites": [{"name": "The lake at Naroda", "status": "ORIG", "note": "Natural feature; the Trust's own description of it is truncated mid-sentence"}, {"name": "Upashray of Naroda", "status": "MEM", "note": "The Trust attributes the four-month chaturmas here to Prabhu Shriji, not to Him"}, {"name": "Newly built Jinmandir and swadhyay hall, NH8", "status": "MEM", "note": "The Trust's own label says 'newly built'"}]}, {"id": 29, "en": "Dharampur", "gu": "ધરમપુર", "alt": "", "district": "Dharampur taluka, Valsad district", "state": "Gujarat", "lat": 20.53, "lng": 73.18, "pin": "High", "period": "VS 1956 (1899–1900), most probably 1900", "from": 1899, "to": 1900, "phase": "final", "evidence": "A retreat of roughly a month in the forests and hills. The jainQQ chronology pairs the Dharampur entry with 'health deteriorated', and the onward sequence to Ahmedabad and Wadhwan Camp is dated 1900–01.", "warn": "This is the sharpest memorial-versus-lifetime trap in the whole dataset. The lifetime evidence is a forest retreat; the ashram is a modern campus. They must not share a pin.", "src": "Trust – Tithal/Dharampur/Bharuch; jainQQ; Wikipedia", "work": "", "sites": [{"name": "Forest and hill retreat landscape", "status": "ORIG", "note": "Exact retreat points not identified"}, {"name": "Shrimad Rajchandra Ashram, Dharampur (223 acres, Mohangadh hillock)", "status": "MEM", "note": "Modern SRMD campus. No lifetime event is claimed for it by any source, including the Trust's own page"}]}, {"id": 30, "en": "Wadhwan Camp", "gu": "વઢવાણ કેમ્પ", "alt": "Surendranagar (renamed 1946), Vadhvan Camp", "district": "Wadhwan taluka, Surendranagar district", "state": "Gujarat", "lat": 22.720132, "lng": 71.649536, "pin": "High", "period": "VS 1941 (?) and VS 1956–1957 (1899–1901)", "from": 1899, "to": 1901, "phase": "final", "evidence": "A 16-avadhan performance before a reported 2,000 people. Photographs of Him were taken here. An institution and library were founded. In the final months of VS 1957 He moved here from Ahmedabad before the last journey to Rajkot.", "warn": "Wadhwan Camp was the British agency settlement about 3 km north-west of Wadhwan town; it was renamed Surendranagar in 1946. Devotional references to 'Wadhwan Camp' should pin to Surendranagar (22.7201, 71.6495), not to Wadhwan town (22.700, 71.683). Edition 1 did not distinguish them.", "src": "Wikipedia; jainQQ; Trust", "work": "", "sites": [{"name": "Historic Wadhwan Camp locality", "status": "UNID", "note": "Original bungalow and institution buildings not identified"}]}, {"id": 31, "en": "Tithal", "gu": "તીથલ", "alt": "Titthal", "district": "Valsad taluka, Valsad district", "state": "Gujarat", "lat": 20.588, "lng": 72.901, "pin": "High", "period": "VS 1957 (1900–01)", "from": 1900, "to": 1901, "phase": "final", "evidence": "A 45-day coastal retreat on the way from Mumbai to Wadhwan, during the final illness.", "warn": "", "src": "Trust – Tithal/Dharampur/Bharuch; jainQQ", "work": "", "sites": [{"name": "Tithal Bungalow", "status": "ORIG", "note": "The Trust names it as the bungalow where He stayed; no preservation claim made"}, {"name": "Shrimad Rajchandra Mandir, Tithal", "status": "MEM", "note": "Later construction"}]}, {"id": 32, "en": "Kheda", "gu": "ખેડા", "alt": "Kaira, Khetaka", "district": "Kheda taluka, Kheda district", "state": "Gujarat", "lat": 22.75, "lng": 72.68, "pin": "High", "period": "VS 1954 (1897–98)", "from": 1897, "to": 1898, "phase": "retreat", "evidence": "A 23-day retreat with forest meditation, at the end of the Vaso–Uttarsanda–Kheda sequence. SRMD describes this whole period as months in seclusion in the Gujarati wilderness.", "warn": "", "src": "SRMD life; jainQQ", "work": "", "sites": [{"name": "Historical retreat area", "status": "UNID", "note": "Exact bungalow or site not identified"}]}, {"id": 33, "en": "Uttarsanda", "gu": "ઉત્તરસંડા", "alt": "", "district": "Nadiad taluka, Kheda district", "state": "Gujarat", "lat": 22.65778, "lng": 72.89806, "pin": "High", "period": "VS 1954 (1897–98)", "from": 1897, "to": 1898, "phase": "retreat", "evidence": "About a month at the Dhaneshwari Bungalow while travelling from Vaso to Kheda. He sat for hours in meditation on the bank of the small lake.", "warn": "", "src": "Trust – Nadiad/Uttarsanda", "work": "", "sites": [{"name": "Dhaneshwari Bungalow", "status": "ORIG", "note": "The Trust explicitly writes '(original)' — one of only two explicit originality claims on the whole Trust site"}, {"name": "Shrimad Vankshetra Mandir", "status": "MEM", "note": "The modern overlay around the original bungalow core"}, {"name": "The small lake and its memorial building", "status": "MEM", "note": "The memorial is 500 m from Vankshetra; the lake itself is the original feature"}]}, {"id": 34, "en": "Vaso", "gu": "વસો", "alt": "", "district": "Nadiad taluka, Kheda district", "state": "Gujarat", "lat": 22.66, "lng": 72.75, "pin": "High", "period": "VS 1954 (1897–98)", "from": 1897, "to": 1898, "phase": "retreat", "evidence": "A month-long stay at Navlakha nu Dehlu with extensive discourses, meditation in the Digambar posture at the Mahadev temple, and frequent visits to the old cremation ground.", "warn": "Kheda district tourism lists the village's principal havelis as Vithalbhai Haveli and Gopaldas Haveli. 'Navlakha nu Dehlu' is the Trust's name and may be a local usage for one of them — worth confirming on the ground before it is used as a map label.", "src": "Trust – Vaso", "work": "", "sites": [{"name": "Navlakha nu Dehlu", "status": "ORIG", "note": "The Trust records a stay of almost a month in VS 1954"}, {"name": "Mahadev Temple", "status": "ORIG", "note": "He meditated here in Digambar style"}, {"name": "Old crematorium", "status": "ORIG", "note": "Frequented for meditation"}, {"name": "Digambar temple", "status": "ORIG", "note": "Frequented by Him"}, {"name": "Shwetambar temple", "status": "ORIG", "note": "Frequented by Him"}, {"name": "Sthanakvasi Upashray", "status": "MEM", "note": "The Trust associates it with Prabhu Shriji, not with Him"}, {"name": "Shrimad Rajchandra Jain Subodh Pustakalaya", "status": "MEM", "note": "Established VS 1987 (1930–31), and the present library is newer still"}]}, {"id": 35, "en": "Petlad", "gu": "પેટલાદ", "alt": "", "district": "Petlad taluka, Anand district", "state": "Gujarat", "lat": 22.47, "lng": 72.8, "pin": "High", "period": "Travel stop, VS 1952–1954 period", "from": 1895, "to": 1898, "phase": "retreat", "evidence": "Edition 1 records that the biography states He left Mumbai and travelled to Kavitha via Petlad. A transit stop rather than a stay.", "warn": "Not confirmed in this round. The jainQQ chronology does not name Petlad in any year. The claim needs its page citation in Life of Shrimad Rajchandra supplied before it is carried forward.", "src": "Edition 1 citation of the biography", "work": "", "sites": [{"name": "Transit stop; no site identified", "status": "UNID", "note": ""}]}], "disputed": [{"name": "Chennai (Madras)", "detail": "The sole basis is one word in the jainQQ Bibliography's VS 1955 entry: 'Mumbai, Eedar, Morbi, Vavania, Naroda, Ahmedabad, Chennai, Viramgam.' Nothing else supports it. Checked without result: SRMD's biography, the Shrimad Rajchandra Trust, English Wikipedia, the Colorado State edition of Life of Shrimad Rajchandra, jainQQ's own Life of Shrimad Rajchandra, the Gujarati Sachitra Jivan Darshan (searched for મદ્રાસ), atmadharma.com, the JAINA biography and rajsaubhag.org. Four further problems: (1) 'Chennai' is a 1996 renaming, so the compiler normalised whatever the original said, exactly as it renders Bombay as Mumbai and Idar as Eedar — the modern form is the compiler's reading, not the source text; (2) it is dropped between Ahmedabad and Viramgam, two towns 60 km apart on one rail line, while every other place in the entry is in Gujarat or Bombay; (3) VS 1955 is the year of renunciation and the three-month Idar retreat, which sits awkwardly with a 1,900 km journey; (4) the 'six days' has no source at all and appears to be borrowed from the VS 1946 entry, 'six days with Ambalalbhai at Sayla.' Recommendation: move to the disputed register, drop the duration outright, and do not pin."}, {"name": "Kutch", "detail": "The Kutch references in Life of Shrimad Rajchandra describe people from Kutch coming to Him, not Him going to Kutch: Padamashi Thakarshi, a Bania of Kutch, in contact since 1886; Hemrajbhai of Koday and Malshibhai of Naliya, who came to hear of the poet Raychandbhai of Vavania. Koday and Naliya name His correspondents' homes. No source found states He travelled to Kutch. The Diwan Manibhai Jashbhai lecture and royal-court calligraphy invitation cited in Edition 1 could not be located in this round and need their page reference supplied."}, {"name": "Jetpar", "detail": "The jainQQ chronology's VS 1946 entry reads 'Met Sobhagbhai at Morbi.' No source located names Jetpar as the venue. Only one census village spelled Jetpar was found in Gujarat — in Morvi taluka, recorded under Rajkot district in the 2011 census and in Morbi district since 2013 — and the single coordinate available for it (22.9971, 70.8957) is an electrical substation record, not a village centroid. Note also that Jetpur in Rajkot district is a different and much larger town. Either supply the Trust page that names Jetpar, or fold this into Morbi."}], "candidate": {"name": "Junagadh", "lat": 21.522194, "lng": 70.457889, "detail": "Excluded in Edition 1 for want of evidence. This round found a first-person line in Life of Shrimad Rajchandra: 'Thereafter when I saw the fortress of Junagadh, it increased a great deal.' Read plainly this is an eyewitness recollection of the Uparkot fort. It is one sentence, undated, and it is the only one of the four places Edition 1 excluded that has any positive evidence at all. Recommendation: admit to the candidate register pending a second source, not to the confirmed list."}};
+// Where corrections go. Set ONE of these and the panel offers a real route back:
+//   email - opens the reader's mail client with the entry already quoted
+//   url   - opens your correction form instead
+// Leave both blank and the panel says corrections are welcome without offering a dead link.
+const CORRECTIONS = {email: "", url: ""};
+
+const SL = {ORIG:"Original survives", MEM:"Later memorial", GONE:"Altered", UNID:"Not located"};
+const ENT = {"&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;"};
+const esc = t => String(t === null || t === undefined ? "" : t).replace(/[&<>"]/g, c => ENT[c]);
+const PH = {}; DATA.phases.forEach(p => PH[p[0]] = {label:p[1], years:p[2], color:p[3]});
+let lang = "en", active = new Set(Object.keys(PH)), only = null;
+
+const map = L.map("map", {scrollWheelZoom:true, zoomControl:true}).setView([22.6, 71.9], 7);
+// CARTO's Voyager basemap now burns an "API KEY REQUIRED" watermark into every tile it
+// serves to an unregistered site, so this uses the OpenStreetMap standard tiles instead:
+// no key, no billing, and no watermark. They run warmer and louder than Voyager did, which
+// the filter on .leaflet-tile below quiets back down to the colour of the page.
+L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+  maxZoom:19, attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map);
+
+const layer = L.layerGroup().addTo(map);
+const siteLayer = L.layerGroup().addTo(map);
+const nameOf = p => lang === "gu" && p.gu ? p.gu : p.en;
+let openPlaceRef = null;
+
+function visible(p){
+  if (p.lat === null) return false;
+  if (!active.has(p.phase)) return false;
+  if (only === "ORIG" && !p.sites.some(s => s.status === "ORIG")) return false;
+  if (only === "WORK" && !p.work) return false;
+  return true;
+}
+
+function render(){
+  layer.clearLayers();
+  const shown = DATA.places.filter(visible);
+  shown.forEach(p => {
+    const big = p.sites.filter(s => s.status !== "UNID").length;
+    const r = 7 + Math.min(big, 6) * 1.4;
+    const m = L.circleMarker([p.lat, p.lng], {
+      radius:r, color:"#fff", weight:2, fillColor:PH[p.phase].color, fillOpacity:.92
+    }).addTo(layer);
+    m.bindTooltip(nameOf(p), {direction:"top", offset:[0,-r]});
+    m.on("click", () => openPlace(p));
+  });
+  document.getElementById("count").textContent =
+    shown.length + " of " + DATA.places.filter(p => p.lat !== null).length + " places shown";
+}
+
+function openPlace(p){
+  openPlaceRef = p;
+  siteLayer.clearLayers();
+  const c = document.getElementById("pc");
+  let h = '<span class="phase-tag" style="background:' + PH[p.phase].color + '">' + esc(PH[p.phase].label) + '</span>';
+  h += '<p class="ptitle">' + esc(p.en) + '</p>';
+  if (p.gu) h += '<p class="pgu">' + esc(p.gu) + '</p>';
+  h += '<p class="pmeta">' + esc(p.district) + ', ' + esc(p.state) +
+       (p.alt ? '<br>also ' + esc(p.alt) : '') +
+       '<br>' + p.lat.toFixed(5) + ', ' + p.lng.toFixed(5) + ' &middot; pin confidence: ' + esc(p.pin) +
+       '<br><strong>' + esc(p.period) + '</strong></p>';
+  if (p.work) h += '<div class="work">' + esc(p.work) + '</div>';
+  h += '<p class="ev">' + esc(p.evidence) + '</p>';
+  h += '<h3 class="sec">Sites &mdash; and what survives</h3>';
+  p.sites.forEach((s, i) => {
+    h += '<p class="site"><span class="badge ' + s.status + '">' + SL[s.status].toUpperCase() + '</span>' +
+         '<span class="nm">' + esc(s.name) + '</span>' +
+         (s.note ? ' <span class="nt">&mdash; ' + esc(s.note) + '</span>' : '') +
+         (s.lat !== undefined
+           ? '<br><button class="sitepin" type="button" data-site="' + i + '">&#9673; ' +
+             s.lat.toFixed(5) + ', ' + s.lng.toFixed(5) + (s.pin ? ' &middot; ' + esc(s.pin) : '') + '</button>'
+           : '') +
+         '</p>';
+  });
+  const inherited = p.sites.filter(s => s.lat === undefined).length;
+  if (inherited) h += '<div class="openq">' +
+    (inherited === p.sites.length
+      ? 'No site here carries coordinates of its own yet'
+      : inherited + ' of these sites carry no coordinates of their own') +
+    ' &mdash; for those, the pin on the map is the town, not the building.</div>';
+  if (p.warn) h += '<div class="caution"><strong>Caution.</strong> ' + esc(p.warn) + '</div>';
+  h += '<p class="src">Sources: ' + esc(p.src) + '</p>';
+  h += correction(p);
+  c.innerHTML = h;
+  document.getElementById("panel").classList.add("open");
+  document.getElementById("panel").scrollTop = 0;
+  map.panTo([p.lat, p.lng]);
+}
+
+// A correction is only worth having with its source attached, so the draft asks for one.
+function correction(p){
+  if (CORRECTIONS.url)
+    return '<a class="corr" href="' + esc(CORRECTIONS.url) + '" target="_blank" rel="noopener">' +
+           'Know something we have wrong? Tell us &rarr;</a>';
+  if (CORRECTIONS.email){
+    const subject = "Correction - " + p.en + " - Lifetime Places map";
+    const body = [
+      "Entry: " + p.en + (p.gu ? " (" + p.gu + ")" : ""),
+      "As published: " + p.district + ", " + p.state,
+      "Pin: " + (p.lat === null ? "not located"
+                                : p.lat.toFixed(5) + ", " + p.lng.toFixed(5) + " (confidence: " + p.pin + ")"),
+      "",
+      "What is wrong:",
+      "",
+      "",
+      "The published source for the correction (book and page, or the Trust page):",
+      "",
+      ""
+    ].join("\n");
+    return '<a class="corr" href="mailto:' + CORRECTIONS.email +
+           '?subject=' + encodeURIComponent(subject) +
+           '&body=' + encodeURIComponent(body) + '">' +
+           'Know something we have wrong? Tell us &rarr;</a>';
+  }
+  return '<span class="corrnote">Corrections are welcome, and a published source settles them. ' +
+         'Set an address in CORRECTIONS at the top of the page script to collect them here.</span>';
+}
+
+// panning to a site that carries its own pin
+document.getElementById("pc").addEventListener("click", e => {
+  const b = e.target.closest(".sitepin");
+  if (!b || !openPlaceRef) return;
+  const s = openPlaceRef.sites[Number(b.dataset.site)];
+  siteLayer.clearLayers();
+  L.circleMarker([s.lat, s.lng], {radius:9, color:"#1c1a17", weight:2, dashArray:"3 3",
+                                  fillColor:PH[openPlaceRef.phase].color, fillOpacity:.55})
+   .addTo(siteLayer).bindTooltip(s.name, {direction:"top", offset:[0,-9]}).openTooltip();
+  map.setView([s.lat, s.lng], 16);
+});
+
+document.getElementById("close").onclick = () => {
+  document.getElementById("panel").classList.remove("open");
+  siteLayer.clearLayers();
+  openPlaceRef = null;
+};
+
+// phase chips
+const bar = document.getElementById("phasebar");
+DATA.phases.forEach(([k, label, years, col, short]) => {
+  const b = document.createElement("button");
+  b.type = "button"; b.className = "chip on " + k;
+  b.innerHTML = '<span class="dot"></span><span class="lg">' + esc(label) +
+                ' <span class="yr">' + esc(years) + '</span></span><span class="sm">' + esc(short) + '</span>';
+  b.onclick = () => {
+    if (active.has(k)) { active.delete(k); b.classList.remove("on"); }
+    else { active.add(k); b.classList.add("on"); }
+    render();
+  };
+  bar.appendChild(b);
+});
+
+document.querySelectorAll("[data-only]").forEach(b => {
+  b.onclick = () => {
+    const v = b.dataset.only;
+    document.querySelectorAll("[data-only]").forEach(x => x.classList.remove("on"));
+    only = (only === v) ? null : v;
+    if (only) b.classList.add("on");
+    render();
+  };
+});
+
+document.getElementById("lang").onclick = () => {
+  lang = lang === "en" ? "gu" : "en";
+  document.getElementById("lang").textContent = lang === "en" ? "ગુજરાતી" : "English";
+  render();
+};
+
+// legend
+document.getElementById("legend").innerHTML = "<b>Life phase</b>" +
+  DATA.phases.map(([k, label, years, col, short]) =>
+    '<div class="l"><i style="background:' + col + '"></i>' + esc(label) + '</div>').join("") +
+  '<div class="l" style="margin-top:6px;color:#6b6459">Dot size = documented sites</div>';
+
+// unpinned note
+const un = DATA.places.filter(p => p.lat === null);
+document.getElementById("unpinned").innerHTML = un.length
+  ? '<br><strong>Documented but not yet located:</strong> ' + un.map(p => esc(p.en)).join(", ") +
+    '. ' + DATA.disputed.length + ' further entries sit in a disputed register pending better evidence.'
+  : "";
+
+render();
+</script>
+</body>
+</html>

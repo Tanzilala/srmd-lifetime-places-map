@@ -1,0 +1,22 @@
+{
+  "disputed": [
+    {
+      "name": "Chennai (Madras)",
+      "detail": "The sole basis is one word in the jainQQ Bibliography's VS 1955 entry: 'Mumbai, Eedar, Morbi, Vavania, Naroda, Ahmedabad, Chennai, Viramgam.' Nothing else supports it. Checked without result: SRMD's biography, the Shrimad Rajchandra Trust, English Wikipedia, the Colorado State edition of Life of Shrimad Rajchandra, jainQQ's own Life of Shrimad Rajchandra, the Gujarati Sachitra Jivan Darshan (searched for મદ્રાસ), atmadharma.com, the JAINA biography and rajsaubhag.org. Four further problems: (1) 'Chennai' is a 1996 renaming, so the compiler normalised whatever the original said, exactly as it renders Bombay as Mumbai and Idar as Eedar — the modern form is the compiler's reading, not the source text; (2) it is dropped between Ahmedabad and Viramgam, two towns 60 km apart on one rail line, while every other place in the entry is in Gujarat or Bombay; (3) VS 1955 is the year of renunciation and the three-month Idar retreat, which sits awkwardly with a 1,900 km journey; (4) the 'six days' has no source at all and appears to be borrowed from the VS 1946 entry, 'six days with Ambalalbhai at Sayla.' Recommendation: move to the disputed register, drop the duration outright, and do not pin."
+    },
+    {
+      "name": "Kutch",
+      "detail": "The Kutch references in Life of Shrimad Rajchandra describe people from Kutch coming to Him, not Him going to Kutch: Padamashi Thakarshi, a Bania of Kutch, in contact since 1886; Hemrajbhai of Koday and Malshibhai of Naliya, who came to hear of the poet Raychandbhai of Vavania. Koday and Naliya name His correspondents' homes. No source found states He travelled to Kutch. The Diwan Manibhai Jashbhai lecture and royal-court calligraphy invitation cited in Edition 1 could not be located in this round and need their page reference supplied."
+    },
+    {
+      "name": "Jetpar",
+      "detail": "The jainQQ chronology's VS 1946 entry reads 'Met Sobhagbhai at Morbi.' No source located names Jetpar as the venue. Only one census village spelled Jetpar was found in Gujarat — in Morvi taluka, recorded under Rajkot district in the 2011 census and in Morbi district since 2013 — and the single coordinate available for it (22.9971, 70.8957) is an electrical substation record, not a village centroid. Note also that Jetpur in Rajkot district is a different and much larger town. Either supply the Trust page that names Jetpar, or fold this into Morbi."
+    }
+  ],
+  "candidate": {
+    "name": "Junagadh",
+    "lat": 21.522194,
+    "lng": 70.457889,
+    "detail": "Excluded in Edition 1 for want of evidence. This round found a first-person line in Life of Shrimad Rajchandra: 'Thereafter when I saw the fortress of Junagadh, it increased a great deal.' Read plainly this is an eyewitness recollection of the Uparkot fort. It is one sentence, undated, and it is the only one of the four places Edition 1 excluded that has any positive evidence at all. Recommendation: admit to the candidate register pending a second source, not to the confirmed list."
+  }
+}

@@ -1,0 +1,2 @@
+# build.py compares generated files byte for byte, so line endings must not drift
+* text=auto eol=lf
