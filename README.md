@@ -64,6 +64,17 @@ and shown in the panel. An address is not a coordinate, but it is what a pilgrim
 navigates by, and unlike a pin inferred from a neighbouring building it is sourced. Six sites
 carry one so far.
 
+## Using the map
+
+Each entry has its own link — `index.html#uttarsanda`, `#vavania`, `#hadmatiya` — so a particular
+place can be sent to someone or cited from the reviewer's sheet, and the back button walks through
+the entries you have opened. Markers are reachable by Tab and open with Enter or Space; Escape, a
+click on the map, or the × closes the panel.
+
+The two documented-but-unlocated places, Hadmatiya and Rajpur, have no marker to click, so they are
+links in the footer. Their entries carry the longest research notes in the data and were previously
+unreadable.
+
 ## Corrections
 
 Open `index.html` and set `CORRECTIONS` near the top of the page script:
