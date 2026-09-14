@@ -6,6 +6,7 @@ lived in during His lifetime (1867–1901).
 ## What's here
 
     index.html            The map. Self-contained — double-click it, or push it to GitHub Pages.
+    review.html           Generated. The reviewer's sheet — print it, or send the file.
     build.py              Rebuilds everything below from the two CSVs.
     data/places.csv       The research source. Edit this.
     data/sites.csv        Individual sites within each place, with survival status. Edit this.
@@ -22,8 +23,8 @@ Edit a CSV, then run:
 
     python build.py
 
-That rewrites `data/places.json`, `data/places.geojson` and the `const DATA = {...};` block inside
-`index.html`, and refuses to write anything if a row is malformed — an unknown life phase or
+That rewrites `data/places.json`, `data/places.geojson`, `review.html` and the `const DATA = {...};`
+block inside `index.html`, and refuses to write anything if a row is malformed — an unknown life phase or
 survival status, a latitude without a longitude, a place with no sites, a site pointing at a place
 that does not exist. `python build.py --check` reports whether the generated files are current
 without touching them, which is worth running before a commit.
@@ -57,6 +58,11 @@ one has actually been sourced; where it has not, the site inherits the town pin,
 says so in as many words rather than letting the reader assume the dot is the doorway. One site
 is pinned at present — see "Still open" below.
 
+Where the body that runs a site publishes a postal address, that address is recorded against it
+and shown in the panel. An address is not a coordinate, but it is what a pilgrim actually
+navigates by, and unlike a pin inferred from a neighbouring building it is sourced. Six sites
+carry one so far.
+
 ## Corrections
 
 Open `index.html` and set `CORRECTIONS` near the top of the page script:
@@ -85,7 +91,10 @@ covers the tiles this now uses; a map of this size sits comfortably inside it.
 1. ~~Replace the "Tell us" link with a real correction form or email address.~~ The mechanism is
    built; set `CORRECTIONS` as above to turn it on.
 2. Have someone who reads Gujarati and someone connected to one of the trusts read the entries.
-   This one cannot be done from the sources — it needs the two readers.
+   `review.html` is built for exactly this: every claim with its evidence and its source, a box
+   to tick against each, and a line for the source of any correction. It prints cleanly, and it
+   is a single file, so it can simply be emailed. The two readings are independent and can go to
+   two people at once. This one cannot be done from the sources — it needs the readers.
 
 ## Still open
 
@@ -102,6 +111,12 @@ covers the tiles this now uses; a map of this size sits comfortably inside it.
   unverified.
 - Whether the Aga Khan bungalow in Ahmedabad still stands, and where it is. The Trust's own
   register attests the VS 1957 stay and publishes no address; nothing independent was found.
-- Site-level coordinates generally: 87 of the 88 sites still inherit their town's pin.
+- Site-level coordinates generally: 87 of the 88 sites still inherit their town's pin. Open
+  geodata is a dead end here — OpenStreetMap holds two Rajchandra-named features in all of
+  Gujarat, both hospitals, and none of the ashrams, temples or houses. The trusts hold these
+  addresses; asking them is the route, and the last question on every page of `review.html` asks
+  it. Where a trust publishes an address it is now recorded, and where OpenStreetMap has a
+  neighbouring campus building — the Dharampur hospital, the Sayla eye hospital — that is noted
+  as a navigation aid rather than promoted to a pin.
 
 Full reasoning, sources and the disputed register are in the Research Edition 2 PDF.

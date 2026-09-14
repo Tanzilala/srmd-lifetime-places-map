@@ -424,7 +424,8 @@
      {
       "name": "Shri Raj Sobhag Ashram",
       "status": "MEM",
-      "note": "The Trust states the residence 'has been recreated in its original form' — a reconstruction, not the house"
+      "note": "Founded after His lifetime on the documented Sayla ground. OpenStreetMap has the campus Shree Raj Saubhag Eye Hospital at 22.54623, 71.48419, within about 300 m of the town pin this site already inherits, so no separate pin is warranted yet.",
+      "addr": "Saubhagpara, near National Highway 47, Sayla 363430, Surendranagar district"
      }
     ]
    }
@@ -844,7 +845,8 @@
      {
       "name": "Shrimad Rajchandra Ashram / Raj Kutir",
       "status": "MEM",
-      "note": "Modern complex built around the room; no year published"
+      "note": "Modern complex built around the room; no year published",
+      "addr": "Vadva, Metpur, Khambhat 388620"
      }
     ]
    }
@@ -995,12 +997,14 @@
      {
       "name": "Shrimad Rajchandra Vihar Bhavan / Nutan Jain Mandir",
       "status": "MEM",
-      "note": "Built VS 1966 (1909–10) by Shri Girdharbhai, son of Mansukhbhai Devshi of Limbdi — eight years after His passing"
+      "note": "Built VS 1966 (1909–10) by Shri Girdharbhai, son of Mansukhbhai Devshi of Limbdi — eight years after His passing",
+      "addr": "Ghantiya Pahad, Idar 383430"
      },
      {
       "name": "Sadguru Prasad (Shri Guru Mandir)",
       "status": "MEM",
-      "note": "Built at the place where He gave the Dravyasangrah discourse"
+      "note": "Built at the place where He gave the Dravyasangrah discourse",
+      "addr": "Ghantiya Pahad, Idar 383430"
      },
      {
       "name": "Shwetambar and Digambar hill temples",
@@ -1010,7 +1014,8 @@
      {
       "name": "Ghantiya Pahad (the hill itself)",
       "status": "ORIG",
-      "note": "Natural feature. The Trust places the ashram on the Ghantiya hill at Barvav, roughly 2 km from Idar town on a small rocky hill. Neither the hill nor Barvav is in OpenStreetMap, and no gazetteer coordinate was found, so it still inherits the Idar pin."
+      "note": "Natural feature. The Trust gives its Idar ashram's address as Ghantiya Pahad, Idar 383430, and describes the hill as about 2 km from Idar town at Barvav. Neither the hill nor Barvav is in OpenStreetMap and no gazetteer publishes a coordinate, so it still inherits the Idar pin.",
+      "addr": "Ghantiya Pahad, Idar 383430"
      },
      {
       "name": "Kanvanath Mahadev; Ramanlal ni Chauki; Rukhi Raani nu Maaliyu",
@@ -1137,7 +1142,8 @@
      {
       "name": "Shrimad Rajchandra Ashram, Dharampur (223 acres, Mohangadh hillock)",
       "status": "MEM",
-      "note": "Modern SRMD campus. No lifetime event is claimed for it by any source, including the Trust's own page"
+      "note": "223 acres on the Mohangadh hillock. SRMD publishes the address but no coordinate. OpenStreetMap has a Shrimad Rajchandra Hospital node at 20.53771, 73.16970, which is the campus hospital; that is an adjacent building rather than the ashram itself, so it is recorded here as a navigation aid and not used as the pin.",
+      "addr": "Shrimad Rajchandra Marg, Dharampur 396050, Valsad district"
      }
     ]
    }
