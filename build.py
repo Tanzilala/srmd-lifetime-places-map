@@ -12,8 +12,10 @@ Generated (do not edit by hand):
     index.html          the `const DATA = {...};` block is rewritten in place
     review.html         the reviewer's sheet, for the Gujarati and trust readings
 
-Run:  python build.py         rebuild
-      python build.py --check verify the generated files are up to date
+Run:  python build.py             rebuild
+      python build.py --check     verify the generated files are up to date
+      python build.py --unlocated print the sites still lacking a location, grouped by the
+                                  body whose register covers them — for outreach.md
 """
 
 import csv, json, re, sys, pathlib
@@ -303,7 +305,49 @@ def rendered(data, geojson):
     }
 
 
+def print_unlocated(data):
+    """The standing ask in outreach.md, recomputed against the current data.
+
+    Grouped by the body cited as the source for the place, because that is who
+    would know. A place can appear under more than one; SRMD is narrowed to the
+    places the Trust's own register does not already cover.
+    """
+    groups = [
+        ("Shrimad Rajchandra Nijabhyas Mandap & Vihar Bhavan Trust",
+         lambda p: "Trust" in p["src"]),
+        ("Shree Raj Saubhag Satsang Mandal",
+         lambda p: "Saubhag" in p["src"]),
+        ("Shrimad Rajchandra Mission Dharampur",
+         lambda p: "SRMD" in p["src"] and "Trust" not in p["src"]),
+        ("No trust cited — these need another route entirely",
+         lambda p: not any(k in p["src"] for k in ("Trust", "Saubhag", "SRMD"))),
+    ]
+    labels = {"ORIG": "original survives", "MEM": "later memorial",
+              "GONE": "gone or altered", "UNID": "not identified at all"}
+    total = 0
+    for title, match in groups:
+        rows = [(p, [s for s in p["sites"] if "lat" not in s])
+                for p in data["places"] if match(p)]
+        rows = [(p, ss) for p, ss in rows if ss]
+        n = sum(len(ss) for _, ss in rows)
+        total += n
+        print("\n{}\n{}\n{} places, {} sites without a location".format(
+            title, "=" * len(title), len(rows), n))
+        for p, ss in rows:
+            where = ("town centre {:.4f}, {:.4f}".format(p["lat"], p["lng"])
+                     if p["lat"] is not None else "village not identified")
+            print("\n  {} — map shows {}".format(p["en"], where))
+            for s in ss:
+                print("    - {} ({}){}".format(
+                    s["name"], labels[s["status"]],
+                    " — published address: " + s["addr"] if s.get("addr") else ""))
+    print("\n{} site entries in all (a place cited by two bodies is listed under each).".format(total))
+
+
 if __name__ == "__main__":
+    if "--unlocated" in sys.argv:
+        print_unlocated(build()[0])
+        sys.exit(0)
     files = rendered(*build())
     check = "--check" in sys.argv
     stale = []

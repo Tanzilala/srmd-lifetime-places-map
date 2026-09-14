@@ -7,6 +7,7 @@ lived in during His lifetime (1867–1901).
 
     index.html            The map. Self-contained — double-click it, or push it to GitHub Pages.
     review.html           Generated. The reviewer's sheet — print it, or send the file.
+    outreach.md           Draft letters to the three trusts, asking where the sites are.
     build.py              Rebuilds everything below from the two CSVs.
     data/places.csv       The research source. Edit this.
     data/sites.csv        Individual sites within each place, with survival status. Edit this.
@@ -115,8 +116,10 @@ covers the tiles this now uses; a map of this size sits comfortably inside it.
   geodata is a dead end here — OpenStreetMap holds two Rajchandra-named features in all of
   Gujarat, both hospitals, and none of the ashrams, temples or houses. The trusts hold these
   addresses; asking them is the route, and the last question on every page of `review.html` asks
-  it. Where a trust publishes an address it is now recorded, and where OpenStreetMap has a
-  neighbouring campus building — the Dharampur hospital, the Sayla eye hospital — that is noted
-  as a navigation aid rather than promoted to a pin.
+  it, and `outreach.md` holds a draft letter to each of the three. Where a trust publishes an
+  address it is now recorded, and where OpenStreetMap has a neighbouring campus building — the
+  Dharampur hospital, the Sayla eye hospital — that is noted as a navigation aid rather than
+  promoted to a pin. `python build.py --unlocated` reprints what is still missing, grouped by
+  which body would know.
 
 Full reasoning, sources and the disputed register are in the Research Edition 2 PDF.
