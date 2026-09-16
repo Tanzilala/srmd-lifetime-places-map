@@ -9,8 +9,6 @@ lived in during His lifetime (1867–1901).
     review.html           Generated. The reviewer's sheet — print it, or send the file.
     not-found.md          Generated. Everything still unplaced, and what has been tried.
     not-found.html        Generated. The same list, laid out to print.
-    outreach.md           Draft letters to the three trusts, asking where the sites are.
-    research-brief.md     A standing brief for handing the location hunt to a research agent.
     build.py              Rebuilds everything below from the two CSVs.
     data/places.csv       The research source. Edit this.
     data/sites.csv        Individual sites within each place, with survival status. Edit this.
@@ -148,7 +146,8 @@ covers the tiles this now uses; a map of this size sits comfortably inside it.
 
 1. ~~Replace the "Tell us" link with a real correction form or email address.~~ The mechanism is
    built; set `CORRECTIONS` as above to turn it on.
-2. Have someone who reads Gujarati and someone connected to one of the trusts read the entries.
+2. **Still outstanding.** Have someone who reads Gujarati and someone connected to one of the
+   trusts read the entries.
    `review.html` is built for exactly this: every claim with its evidence and its source, a box
    to tick against each, and a line for the source of any correction. It prints cleanly, and it
    is a single file, so it can simply be emailed. The two readings are independent and can go to
@@ -157,9 +156,10 @@ covers the tiles this now uses; a map of this size sits comfortably inside it.
 ## Research passes
 
 Locations are found in passes and folded in through the CSVs, each pin keeping the source that
-produced it. `research-brief.md` is the standing brief: it states the inclusion standard, lists
-what has already been ruled out so the effort is not spent twice, and names the avenues still
-untried.
+produced it. The standing brief handed to each pass, and the draft letters to the three trusts,
+are kept in `working/` beside this repository rather than inside it — they are correspondence and
+working notes, not part of the published map. The brief points each new pass at `not-found.md`,
+which is generated here and is always current.
 
 **Pass 2 — Gujarati search and the trusts' own prose, 16 September 2026.** Two advances and one
 correction. SRMD states that its Rachnabhoomi memorial stands *on* the site where the Atmasiddhi
