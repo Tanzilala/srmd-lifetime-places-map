@@ -8,6 +8,7 @@ lived in during His lifetime (1867–1901).
     index.html            The map. Self-contained — double-click it, or push it to GitHub Pages.
     review.html           Generated. The reviewer's sheet — print it, or send the file.
     not-found.md          Generated. Everything still unplaced, and what has been tried.
+    not-found.html        Generated. The same list, laid out to print.
     outreach.md           Draft letters to the three trusts, asking where the sites are.
     research-brief.md     A standing brief for handing the location hunt to a research agent.
     build.py              Rebuilds everything below from the two CSVs.
@@ -28,8 +29,8 @@ Edit a CSV, then run:
 
     python build.py
 
-That rewrites `data/places.json`, `data/places.geojson`, `review.html`, `not-found.md` and the
-`const DATA = {...};` block inside `index.html`, and refuses to write anything if a row is malformed — an unknown life phase or
+That rewrites `data/places.json`, `data/places.geojson`, `review.html`, `not-found.md`,
+`not-found.html` and the `const DATA = {...};` block inside `index.html`, and refuses to write anything if a row is malformed — an unknown life phase or
 survival status, a latitude without a longitude, a place with no sites, a site pointing at a place
 that does not exist. `python build.py --check` reports whether the generated files are current
 without touching them, which is worth running before a commit.
@@ -88,6 +89,18 @@ not the lifetime retreat. The same standard that governs a pin governs a picture
 
 To add one: put the file in `images/`, add a row to `data/images.csv` naming the place or site it
 belongs to along with its credit, licence and source, and rebuild.
+
+## The extent of the map
+
+He never left Gujarat and Bombay, so neither does the map. It opens framed on the places
+themselves, will not zoom out past the region and will not pan away from it. Left unfenced, a
+reader can drift into the Arabian Sea or zoom out until thirty-four dots are one speck over western
+India, and nothing on the screen tells them they have gone wrong.
+
+The fence is computed from the data, not written down, so adding a place widens it by itself. It is
+also re-measured once the webfonts have loaded and on every resize: the header is set in a webfont
+and is a different height before and after it arrives, and a map framed against the earlier height
+put Mumbai — the southernmost place He reached — just below the bottom edge.
 
 ## Using the map
 
@@ -188,5 +201,15 @@ jainqq.org full texts, yatra blogs and video, Wikimapia, Bhuvan, census records.
 - The named Kavitha landmarks — three banyans, a well, a field — are oral and local rather than
   indexed anywhere, and will not be found by searching maps in English. They need a yatra account
   or someone who has walked the village.
+
+## Making a PDF of what is missing
+
+`not-found.html` is styled to print. Any browser's print-to-PDF will do it, or from the command
+line:
+
+    chrome --headless=new --no-pdf-header-footer --print-to-pdf=still-not-found.pdf not-found.html
+
+Gujarati needs a browser that has the font, which any current one does. The PDF is not kept in the
+repository, because it is generated from files that are.
 
 Full reasoning, sources and the disputed register are in the Research Edition 2 PDF.

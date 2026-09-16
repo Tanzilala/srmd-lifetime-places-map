@@ -2,3 +2,7 @@ __pycache__/
 *.pyc
 .claude/
 .DS_Store
+
+# generated on demand, not kept in the repository
+still-not-found.pdf
+*.pdf

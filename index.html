@@ -194,7 +194,32 @@ const esc = t => String(t === null || t === undefined ? "" : t).replace(/[&<>"]/
 const PH = {}; DATA.phases.forEach(p => PH[p[0]] = {label:p[1], years:p[2], color:p[3]});
 let lang = "en", active = new Set(Object.keys(PH)), only = null;
 
-const map = L.map("map", {scrollWheelZoom:true, zoomControl:true}).setView([22.6, 71.9], 7);
+const map = L.map("map", {scrollWheelZoom:true, zoomControl:true, maxBoundsViscosity:1});
+
+// He never left Gujarat and Bombay, so neither does the map. The extent is read
+// from the data rather than written down, so adding a place widens it by itself.
+// Without this the reader can pan into the Arabian Sea or zoom out to Antarctica,
+// and every dot becomes one indistinguishable speck over western India.
+const extent = L.latLngBounds(
+  DATA.places.filter(p => p.lat !== null).map(p => [p.lat, p.lng]).concat(
+  DATA.places.flatMap(p => p.sites.filter(s => s.lat !== undefined).map(s => [s.lat, s.lng]))));
+const roam = extent.pad(0.28);
+map.setMaxBounds(roam);
+
+// The header is set in a webfont, so it is a different height before and after
+// that font loads, and a map framed against the earlier height puts Mumbai — the
+// southernmost place He reached — below the bottom edge. Measure again once the
+// fonts have settled, and on every resize, before deciding what fits.
+function reframe(refit){
+  map.invalidateSize({animate:false, pan:false});
+  map.setMinZoom(0);
+  map.setMinZoom(map.getBoundsZoom(roam));
+  if (refit) map.fitBounds(extent.pad(0.04), {animate:false});
+}
+reframe(true);
+window.addEventListener("resize", () => reframe(false));
+if (document.fonts && document.fonts.ready)
+  document.fonts.ready.then(() => reframe(!location.hash));
 // CARTO's Voyager basemap now burns an "API KEY REQUIRED" watermark into every tile it
 // serves to an unregistered site, so this uses the OpenStreetMap standard tiles instead:
 // no key, no billing, and no watermark. They run warmer and louder than Voyager did, which
