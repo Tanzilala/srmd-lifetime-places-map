@@ -18,7 +18,7 @@ Run:  python build.py             rebuild
                                   body whose register covers them — for outreach.md
 """
 
-import csv, json, re, sys, pathlib
+import csv, json, math, re, sys, pathlib
 
 ROOT   = pathlib.Path(__file__).parent
 DATA   = ROOT / "data"
@@ -101,6 +101,21 @@ def build():
         if pid not in sites_by_place:
             errors.append(f"place {pid} ({place['en']}): no rows in sites.csv")
         place["sites"] = sites_by_place.pop(pid, [])
+
+        # A site belongs in its own town. Anything far outside it is a mistyped or
+        # transposed coordinate rather than a discovery, and this is the cheapest
+        # place to catch one.
+        if place["lat"] is not None:
+            for s in place["sites"]:
+                if "lat" not in s:
+                    continue
+                dy = (s["lat"] - place["lat"]) * 111.0
+                dx = (s["lng"] - place["lng"]) * 111.0 * math.cos(math.radians(place["lat"]))
+                km = math.hypot(dy, dx)
+                if km > 25:
+                    errors.append(f"place {pid} ({place['en']}): site {s['name']!r} pins "
+                                  f"{km:.0f} km from the town — check the coordinates")
+
         places.append(place)
 
     for orphan in sites_by_place:

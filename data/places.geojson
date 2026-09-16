@@ -45,7 +45,10 @@
      {
       "name": "Crematorium / lake area of the jatismaran-jnan",
       "status": "ORIG",
-      "note": "Natural feature; located by SRMD, exact point not pinned"
+      "note": "Natural feature, located by a Google Maps listing named 'Shrimad Rajchandra Jatismaran Gyaan' — the name matches the event exactly. It is a separate listing about 250 m from the Janma Bhuvan shrine, so the two are not the same place. Google Maps listing, research pass 1, 14 Sep 2026",
+      "lat": 23.00691,
+      "lng": 70.61002,
+      "pin": "Building"
      }
     ]
    }
@@ -123,7 +126,10 @@
      {
       "name": "Narmada Mansion / Samadhi Bhavan",
       "status": "ORIG",
-      "note": "The room of the Deh Vilay; the Trust names it but never states it is preserved"
+      "note": "The house where He died, 9 April 1901. Google Maps carries it as 'Shrimad Rajchandra Samadhi Bhavan' at Gayatridham Apartment, Kashivishwanath Plot 9, Sadar, Rajkot 360001; a review states He spent his last thirty days on the ground floor of Narmada Mansion. The listing's own name and the review agree with the Trust's account. Google Maps listing, research pass 1, 14 Sep 2026",
+      "lat": 22.30118,
+      "lng": 70.79744,
+      "pin": "Building"
      },
      {
       "name": "Param Samadhi Mandir at the Aaji riverbank cremation ground",
@@ -302,7 +308,7 @@
      {
       "name": "Aga Khan's Bungalow",
       "status": "UNID",
-      "note": "The Trust's Ahmedabad-Naroda register states that in VS 1957 Shrimadji stayed here with His mother and wife, and gives no address. No independent source was found that locates the bungalow or says whether it still stands. Status left as not located rather than guessed at."
+      "note": "The Trust's register states the VS 1957 stay and publishes no address. Searched again for heritage surveys and Ismaili property records; nothing independent found. Genuinely unresolved. Google Maps listing, research pass 1, 14 Sep 2026"
      },
      {
       "name": "Lal Bungalow / Rajnagar Subodhak Pustakalay",
@@ -351,7 +357,10 @@
      {
       "name": "Shri Samali Vihar Jinmandir",
       "status": "ORIG",
-      "note": "Listed by the Trust as historical; no lifetime event stated"
+      "note": "Listed as 'Shree Munisuvrat Swami Samdi Vihar Jain Derasar'. Samdi Vihar is very probably the Samali (Shakunika) Vihar, the historic Bharuch temple of that name, but the listing carries nothing specific to Him, so the name is doing all the work. The temple is identified; the visit rests on the Trust's register as before. Google Maps listing, research pass 1, 14 Sep 2026",
+      "lat": 21.69442,
+      "lng": 72.98476,
+      "pin": "Building — name variant, association unconfirmed"
      }
     ]
    }
@@ -459,22 +468,22 @@
      {
       "name": "Shri Ambalalbhai's house and room",
       "status": "ORIG",
-      "note": "The Trust states it is 'preserved in its original condition' — one of only two explicit originality claims on the whole site"
+      "note": "One of only two buildings the Trust calls original. A Google Maps listing 'Shrimad Rajchandra Raj Chhaya' at 3 Pirajpal Rd, Chudiwaal Chakla, Khambhat (22.31758, 72.61853) carries a review saying the place was consecrated by His presence, and sits in the right quarter of the old city — but it is not named for Ambalalbhai in any source found. Recorded as a candidate, not pinned. Google Maps listing, research pass 1, 14 Sep 2026"
      },
      {
       "name": "Shri Subodhak Pustakalay",
       "status": "ORIG",
-      "note": "Founded on His own instruction during His lifetime; 18-day stay; no year published"
+      "note": "Founded on His own instruction during His lifetime; 18-day stay; no year published Searched by name on Google Maps in pass 1 and not found — expected for a named tree, well or field, which are local landmarks rather than indexed places. Gujarati-language and yatra-video search are the next avenue."
      },
      {
       "name": "Sthanakvasi Upashray, third floor",
       "status": "ORIG",
-      "note": "Where Lalluji Muni first met Him in solitude"
+      "note": "Where Lalluji Muni first met Him in solitude Searched by name on Google Maps in pass 1 and not found — expected for a named tree, well or field, which are local landmarks rather than indexed places. Gujarati-language and yatra-video search are the next avenue."
      },
      {
       "name": "Jain temple near Ambalalbhai's house",
       "status": "ORIG",
-      "note": "Frequented by Him"
+      "note": "Frequented by Him Searched by name on Google Maps in pass 1 and not found — expected for a named tree, well or field, which are local landmarks rather than indexed places. Gujarati-language and yatra-video search are the next avenue."
      },
      {
       "name": "Shri Chotalal Kapurchand house",
@@ -547,12 +556,18 @@
      {
       "name": "Shrimad Rajchandra Smruti Sthal",
       "status": "MEM",
-      "note": "The Trust records it as 500 m from Ralej village; direction unspecified"
+      "note": "Listed as 'Shrimad Rajchandra Smriti Sthan, Ralej'. Google Maps listing, research pass 1, 14 Sep 2026",
+      "lat": 22.30497,
+      "lng": 72.68416,
+      "pin": "Building"
      },
      {
       "name": "Banyan and lakeshore where He sat",
       "status": "ORIG",
-      "note": "Natural features"
+      "note": "Two independent reviews of the Smriti Sthan describe a lakeside setting and say the four padas were composed in this village. The pin is the memorial; whether the banyan itself still stands beside it is not stated. Google Maps listing, research pass 1, 14 Sep 2026",
+      "lat": 22.30497,
+      "lng": 72.68416,
+      "pin": "Locality — the memorial’s lakeside setting"
      },
      {
       "name": "Parsi Bungalow / Karuna Vrushti Smarak",
@@ -766,32 +781,35 @@
      {
       "name": "Gamot Vad (banyan)",
       "status": "ORIG",
-      "note": "He sat and preached beneath it"
+      "note": "He sat and preached beneath it Searched by name on Google Maps in pass 1 and not found — expected for a named tree, well or field, which are local landmarks rather than indexed places. Gujarati-language and yatra-video search are the next avenue."
      },
      {
       "name": "Vijali Mata no Vad (banyan)",
       "status": "ORIG",
-      "note": "Meditation site"
+      "note": "Meditation site Searched by name on Google Maps in pass 1 and not found — expected for a named tree, well or field, which are local landmarks rather than indexed places. Gujarati-language and yatra-video search are the next avenue."
      },
      {
       "name": "Dhainia no Vad (banyan)",
       "status": "ORIG",
-      "note": "Meditation site"
+      "note": "Meditation site Searched by name on Google Maps in pass 1 and not found — expected for a named tree, well or field, which are local landmarks rather than indexed places. Gujarati-language and yatra-video search are the next avenue."
      },
      {
       "name": "Mithuji no Kuvo (well)",
       "status": "ORIG",
-      "note": "Meditation site"
+      "note": "Meditation site Searched by name on Google Maps in pass 1 and not found — expected for a named tree, well or field, which are local landmarks rather than indexed places. Gujarati-language and yatra-video search are the next avenue."
      },
      {
       "name": "Shamal Dosa nu Khetar (field)",
       "status": "ORIG",
-      "note": "Meditation site"
+      "note": "Meditation site Searched by name on Google Maps in pass 1 and not found — expected for a named tree, well or field, which are local landmarks rather than indexed places. Gujarati-language and yatra-video search are the next avenue."
      },
      {
       "name": "Shrimad Rajchandra Mandir",
       "status": "MEM",
-      "note": "Built after 1901 under Prabhu Shriji's direction"
+      "note": "Google Maps plus code CVQ7+RVC, recorded as permanently closed. The listing name matches this site exactly. Decoding was checked against the Vadva code, which reproduced its independently reported decimal coordinate to five places. Google Maps listing, research pass 1, 14 Sep 2026",
+      "lat": 22.43956,
+      "lng": 72.86464,
+      "pin": "Building — decoded from a plus code"
      },
      {
       "name": "Mahudi Memorial",
@@ -830,12 +848,18 @@
      {
       "name": "The room beside the stepwell",
       "status": "ORIG",
-      "note": "The Trust describes it as His home for 15 days; no preservation claim made"
+      "note": "A review of the Vadva ashram names 'the Raj Kutir where Shrimad Ji pointed to the ashram and the well adjoining it' — a direct match for the room beside the stepwell. Google Maps listing, research pass 1, 14 Sep 2026",
+      "lat": 22.31118,
+      "lng": 72.63594,
+      "pin": "Building"
      },
      {
       "name": "The Vaav (stepwell)",
       "status": "ORIG",
-      "note": "Structural feature of His lifetime"
+      "note": "Listed on Google Maps as 'Ramji Mandir & Stepwell, Vadva Khambhat', about 90 m from the Raj Kutir — consistent with 'the room beside the stepwell'. Google Maps listing, research pass 1, 14 Sep 2026",
+      "lat": 22.31196,
+      "lng": 72.6358,
+      "pin": "Building"
      },
      {
       "name": "The Vad (banyan) where He preached",
@@ -845,8 +869,11 @@
      {
       "name": "Shrimad Rajchandra Ashram / Raj Kutir",
       "status": "MEM",
-      "note": "Modern complex built around the room; no year published",
-      "addr": "Vadva, Metpur, Khambhat 388620"
+      "note": "Google Maps plus code 8J6P+F9G, Metpur Rd, Khambhat 388620, which decodes to this point and agrees with the separately reported decimal coordinate. Google Maps listing, research pass 1, 14 Sep 2026",
+      "addr": "Vadva, Metpur, Khambhat 388620",
+      "lat": 22.31118,
+      "lng": 72.63594,
+      "pin": "Building"
      }
     ]
    }
@@ -914,12 +941,54 @@
      {
       "name": "Nana Kumbhdev Mahadev",
       "status": "ORIG",
-      "note": "The Trust is the only source that names the building; SRMD says only 'in Nadiad'"
+      "note": "Where the Atmasiddhi Shastra was composed, so the pin matters more here than anywhere. Two candidate temples were found and they contradict each other: a Mission-built 'Shri Atmasiddhishastra Rachnabhoomi' shrine on Nana Kumbhnath Road (22.68827, 72.86778), which by its own name commemorates the spot rather than being the 1896 temple; and an older 'Mota Kumbhnath Mahadev' nearby claiming no connection to Him. Mota means big and Nana small, suggesting a pair. Left unpinned until a primary source names which. Google Maps listing, research pass 1, 14 Sep 2026"
      },
      {
       "name": "Shri Dahyabhai Desai's house",
       "status": "MEM",
       "note": "The recorded event is Prabhu Shriji's, after 1901 — not a lifetime site"
+     },
+     {
+      "name": "Shri Atmasiddhi Shastra Rachnabhoomi (memorial marking the composition)",
+      "status": "MEM",
+      "note": "A Mission-built shrine on Nana Kumbhnath Road whose name means composition-ground and which commemorates the writing of the Atmasiddhi Shastra on 22 October 1896. Added in pass 1 as a visitable memorial; it is not the 1896 temple itself, and which of the two Kumbhnath temples that was remains open — see the note against Nana Kumbhdev Mahadev. Google Maps listing, research pass 1, 14 Sep 2026",
+      "lat": 22.68827,
+      "lng": 72.86778,
+      "pin": "Locality"
+     }
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     72.70085,
+     22.28455
+    ]
+   },
+   "properties": {
+    "id": 24,
+    "en": "Rajpur",
+    "gu": "રાજપુર",
+    "alt": "Rajpura",
+    "district": "Khambhat taluka, Anand district",
+    "state": "Gujarat",
+    "pin": "Locality — village centre",
+    "period": "VS 1952 (1895–96)",
+    "from": 1895,
+    "to": 1896,
+    "phase": "retreat",
+    "evidence": "Named in the VS 1952 travel entry between Nadiad and Limbdi.",
+    "warn": "Located in research pass 1. Google's own village pin for Rajpur, Gujarat 388640 matches the pincode that village directories give for this village, in the Ralaj-Rajpura gram panchayat about 9 km from Khambhat; the point sits about 2.3 km from Ralej, which is the neighbour the same travel entry names. Population 519. No source names a building within the village, so this is the village centre and nothing finer. Not the Rajmandir Ashram site, and not Rajpur in Barwani, MP.",
+    "src": "jainQQ chronology; census 2011 Khambhat taluka roster; Google Maps listing, research pass 1, 14 Sep 2026",
+    "work": "",
+    "sites": [
+     {
+      "name": "Location not identified",
+      "status": "UNID",
+      "note": ""
      }
     ]
    }
@@ -997,8 +1066,11 @@
      {
       "name": "Shrimad Rajchandra Vihar Bhavan / Nutan Jain Mandir",
       "status": "MEM",
-      "note": "Built VS 1966 (1909–10) by Shri Girdharbhai, son of Mansukhbhai Devshi of Limbdi — eight years after His passing",
-      "addr": "Ghantiya Pahad, Idar 383430"
+      "note": "Listed on Google Maps as 'Shrimad Rajchandra Vihar Dham, Ghantiya Pahad, Idar', a 350-step climb, matching the Trust's stated address and its 'about 2 km from Idar town'. Google Maps listing, research pass 1, 14 Sep 2026",
+      "addr": "Ghantiya Pahad, Idar 383430",
+      "lat": 23.84302,
+      "lng": 72.97533,
+      "pin": "Building"
      },
      {
       "name": "Sadguru Prasad (Shri Guru Mandir)",
@@ -1009,13 +1081,16 @@
      {
       "name": "Shwetambar and Digambar hill temples",
       "status": "ORIG",
-      "note": "Pre-existing temples on the Idar hill"
+      "note": "A Google Maps listing 'Digambar Chhatri (Shrimad Rajchandra)' carries plus code R2M9+P6R, which decodes to 23.83436, 73.01802 — about 1.7 km east of Idar town, and so on the opposite side of the town from Ghantiya Pahad rather than on it. It may belong with the Idar Gadh temples instead. Recorded as a candidate; the contradiction is unresolved. Google Maps listing, research pass 1, 14 Sep 2026"
      },
      {
       "name": "Ghantiya Pahad (the hill itself)",
       "status": "ORIG",
-      "note": "Natural feature. The Trust gives its Idar ashram's address as Ghantiya Pahad, Idar 383430, and describes the hill as about 2 km from Idar town at Barvav. Neither the hill nor Barvav is in OpenStreetMap and no gazetteer publishes a coordinate, so it still inherits the Idar pin.",
-      "addr": "Ghantiya Pahad, Idar 383430"
+      "note": "Open question closed at locality level: the hill is where the Vihar Dham stands, about 2.7 km west of Idar town. The pin is the ashram on the hill; it does not distinguish the Pudhavi Sheela, the cave or the hill temples from one another. Google Maps listing, research pass 1, 14 Sep 2026",
+      "addr": "Ghantiya Pahad, Idar 383430",
+      "lat": 23.84302,
+      "lng": 72.97533,
+      "pin": "Locality — the hill, not a point on it"
      },
      {
       "name": "Kanvanath Mahadev; Ramanlal ni Chauki; Rukhi Raani nu Maaliyu",
@@ -1093,7 +1168,7 @@
      {
       "name": "The lake at Naroda",
       "status": "ORIG",
-      "note": "Natural feature; the Trust's own description of it is truncated mid-sentence"
+      "note": "Searched. The only Naroda lake on Google Maps is a modern public park with a jogging track and no association with Him across 317 reviews — almost certainly not this lake. The Trust's own Ahmedabad-Naroda page confirms the lake tradition and gives no address. Google Maps listing, research pass 1, 14 Sep 2026"
      },
      {
       "name": "Upashray of Naroda",
@@ -1142,7 +1217,7 @@
      {
       "name": "Shrimad Rajchandra Ashram, Dharampur (223 acres, Mohangadh hillock)",
       "status": "MEM",
-      "note": "223 acres on the Mohangadh hillock. SRMD publishes the address but no coordinate. OpenStreetMap has a Shrimad Rajchandra Hospital node at 20.53771, 73.16970, which is the campus hospital; that is an adjacent building rather than the ashram itself, so it is recorded here as a navigation aid and not used as the pin.",
+      "note": "223 acres on the Mohangadh hillock. The modern ashram campus is at 20.54807, 73.19032 — a ticketed, built-up retreat centre of recent decades, recorded here for navigation only. Nothing ties that campus to the 1890s forest tract itself, so it is not used as the pin. Google Maps listing, research pass 1, 14 Sep 2026",
       "addr": "Shrimad Rajchandra Marg, Dharampur 396050, Valsad district"
      }
     ]
@@ -1211,7 +1286,7 @@
      {
       "name": "Tithal Bungalow",
       "status": "ORIG",
-      "note": "The Trust names it as the bungalow where He stayed; no preservation claim made"
+      "note": "Searched by name on Google Maps; no listing under this name or a plausible variant, and not in OpenStreetMap either. Google Maps listing, research pass 1, 14 Sep 2026"
      },
      {
       "name": "Shrimad Rajchandra Mandir, Tithal",
@@ -1284,12 +1359,15 @@
      {
       "name": "Dhaneshwari Bungalow",
       "status": "ORIG",
-      "note": "The Trust explicitly writes '(original)' — one of only two explicit originality claims on the whole Trust site"
+      "note": "The other building the Trust calls original. Searched for by name on Google Maps and not found; the only Him-linked pin in Uttarsanda is the Vankshetra mandir, which is a different thing under a different name. Still not located. Google Maps listing, research pass 1, 14 Sep 2026"
      },
      {
       "name": "Shrimad Vankshetra Mandir",
       "status": "MEM",
-      "note": "The modern overlay around the original bungalow core"
+      "note": "Listed as 'Shrimad Rajchandra Mandir, Vanshetra, Uttarsanda', with a review describing about a month and a half of sadhana here. Note this is the Vankshetra site and not the Dhaneshwari Bungalow, which was searched for separately and not found. Google Maps listing, research pass 1, 14 Sep 2026",
+      "lat": 22.66183,
+      "lng": 72.8827,
+      "pin": "Building"
      },
      {
       "name": "The small lake and its memorial building",
@@ -1321,7 +1399,7 @@
     "to": 1898,
     "phase": "retreat",
     "evidence": "A month-long stay at Navlakha nu Dehlu with extensive discourses, meditation in the Digambar posture at the Mahadev temple, and frequent visits to the old cremation ground.",
-    "warn": "Kheda district tourism lists the village's principal havelis as Vithalbhai Haveli and Gopaldas Haveli. 'Navlakha nu Dehlu' is the Trust's name and may be a local usage for one of them — worth confirming on the ground before it is used as a map label.",
+    "warn": "Kheda district tourism lists the village's principal havelis as Vithalbhai Haveli and Gopaldas Haveli. 'Navlakha nu Dehlu' is the Trust's name and may be a local usage for one of them — worth confirming on the ground before it is used as a map label. A Google Maps listing 'Shrimad Rajchandra Mandir, Vaso' sits at 22.66274, 72.75636, near Ramji Mandir and Ambika Chowk, but nothing in it says which of the seven sites recorded here it is, or whether it is a modern shrine near all of them. Not attached to any of them. Google Maps listing, research pass 1, 14 Sep 2026 A Google Maps listing 'Shrimad Rajchandra Mandir, Vaso' sits at 22.66274, 72.75636, near Ramji Mandir and Ambika Chowk, but nothing in it says which of the seven sites recorded here it is, or whether it is a modern shrine near all of them. Not attached to any of them. Google Maps listing, research pass 1, 14 Sep 2026",
     "src": "Trust – Vaso",
     "work": "",
     "sites": [
