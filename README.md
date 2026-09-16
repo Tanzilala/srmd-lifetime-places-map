@@ -7,12 +7,15 @@ lived in during His lifetime (1867–1901).
 
     index.html            The map. Self-contained — double-click it, or push it to GitHub Pages.
     review.html           Generated. The reviewer's sheet — print it, or send the file.
+    not-found.md          Generated. Everything still unplaced, and what has been tried.
     outreach.md           Draft letters to the three trusts, asking where the sites are.
     research-brief.md     A standing brief for handing the location hunt to a research agent.
     build.py              Rebuilds everything below from the two CSVs.
     data/places.csv       The research source. Edit this.
     data/sites.csv        Individual sites within each place, with survival status. Edit this.
     data/register.json    The disputed and candidate entries. Edit this.
+    data/images.csv       Pictures keyed to a place or site, with their credits. Edit this.
+    images/               The picture files.
     data/places.json      Generated. The same data as one document.
     data/places.geojson   Generated. Standard GeoJSON, if you want to load it into anything else.
 
@@ -25,8 +28,8 @@ Edit a CSV, then run:
 
     python build.py
 
-That rewrites `data/places.json`, `data/places.geojson`, `review.html` and the `const DATA = {...};`
-block inside `index.html`, and refuses to write anything if a row is malformed — an unknown life phase or
+That rewrites `data/places.json`, `data/places.geojson`, `review.html`, `not-found.md` and the
+`const DATA = {...};` block inside `index.html`, and refuses to write anything if a row is malformed — an unknown life phase or
 survival status, a latitude without a longitude, a place with no sites, a site pointing at a place
 that does not exist. `python build.py --check` reports whether the generated files are current
 without touching them, which is worth running before a commit.
@@ -73,12 +76,33 @@ and shown in the panel. An address is not a coordinate, but it is what a pilgrim
 navigates by, and unlike a pin inferred from a neighbouring building it is sourced. Six sites
 carry one so far.
 
+## Pictures
+
+8 places and sites carry a photograph. Every one is freely licensed — all of them from Wikimedia
+Commons — and `build.py` refuses to build if any lacks a credit or a licence, because a photograph
+is publishable only on its licence's terms. Nothing is taken from the trusts' own websites.
+
+Captions say what the picture actually shows. A general view of Idar's hills is captioned as the
+range and not as Ghantiya Pahad; the Dharampur photograph is captioned as the modern complex and
+not the lifetime retreat. The same standard that governs a pin governs a picture.
+
+To add one: put the file in `images/`, add a row to `data/images.csv` naming the place or site it
+belongs to along with its credit, licence and source, and rebuild.
+
 ## Using the map
+
+**All places** opens a searchable index of every place, grouped by life phase, showing each one's
+district, how many sites it holds and whether it is located at all. Thirty-five dots on a map is
+not a way to find a named village.
 
 Each entry has its own link — `index.html#uttarsanda`, `#vavania`, `#hadmatiya` — so a particular
 place can be sent to someone or cited from the reviewer's sheet, and the back button walks through
 the entries you have opened. Markers are reachable by Tab and open with Enter or Space; Escape, a
 click on the map, or the × closes the panel.
+
+Long provenance folds away behind a disclosure rather than being cut. The claim and the first
+sentence of its reasoning stay in the open; *how we know* opens the rest. Research passes make
+these notes grow, and an entry that is thorough should not become an entry nobody reads.
 
 The two documented-but-unlocated places, Hadmatiya and Rajpur, have no marker to click, so they are
 links in the footer. Their entries carry the longest research notes in the data and were previously

@@ -26,11 +26,27 @@
     "warn": "The Trust's own Vavaniya page carries no Vavania entries at all — its rows are mis-filed Uttarsanda content. Vavania is the least-documented major site on the Trust website, not the best.",
     "src": "SRMD life; Raj Saubhag Jatra report 2016",
     "work": "Apurva Avsar Evo Kyare Avshe? — composed here, VS 1953 (1896–97)",
+    "img": {
+     "src": "images/vavania-janmabhuvan.jpg",
+     "alt": "Shrimad Rajchandra Janma Bhuvan, Vavania",
+     "credit": "AuthenticityAssured",
+     "licence": "CC BY-SA 4.0",
+     "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+     "source": "https://commons.wikimedia.org/wiki/File:Shrimad_Rajchandra_Janmabhuvan.jpg"
+    },
     "sites": [
      {
       "name": "Shrimad Rajchandra Janma Bhuvan (birth house)",
       "status": "UNID",
-      "note": "Standing complex; no source states how much of the original house survives"
+      "note": "Standing complex; no source states how much of the original house survives",
+      "img": {
+       "src": "images/vavania-janmabhuvan-interior.jpg",
+       "alt": "Inside the Janma Bhuvan",
+       "credit": "AuthenticityAssured",
+       "licence": "CC BY-SA 4.0",
+       "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+       "source": "https://commons.wikimedia.org/wiki/File:Janmabhuvan-v.jpg"
+      }
      },
      {
       "name": "Rambai Mandir, within the Janma Bhuvan complex",
@@ -464,6 +480,14 @@
     "warn": "",
     "src": "Trust – Ralej/Vadva/Khambhat; jainQQ",
     "work": "",
+    "img": {
+     "src": "images/khambhat-tower.jpg",
+     "alt": "Tower circle, Khambhat — a general view, not one of the sites",
+     "credit": "Dhruv855",
+     "licence": "CC BY 3.0",
+     "licence_url": "https://creativecommons.org/licenses/by/3.0",
+     "source": "https://commons.wikimedia.org/wiki/File:City_of_Khambaht(Tower_Area).jpg"
+    },
     "sites": [
      {
       "name": "Shri Ambalalbhai's house and room",
@@ -954,7 +978,15 @@
       "note": "A Mission-built shrine on Nana Kumbhnath Road whose name means composition-ground and which commemorates the writing of the Atmasiddhi Shastra on 22 October 1896. Added in pass 1 as a visitable memorial; it is not the 1896 temple itself, and which of the two Kumbhnath temples that was remains open — see the note against Nana Kumbhdev Mahadev. Google Maps listing, research pass 1, 14 Sep 2026",
       "lat": 22.68827,
       "lng": 72.86778,
-      "pin": "Locality"
+      "pin": "Locality",
+      "img": {
+       "src": "images/nadiad-rachnabhoomi-room.jpg",
+       "alt": "The room the Rachnabhoomi presents as where the Atmasiddhi Shastra was composed",
+       "credit": "AuthenticityAssured",
+       "licence": "CC BY-SA 4.0",
+       "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+       "source": "https://commons.wikimedia.org/wiki/File:Shri_Atmasiddhi_Rachnabhoomi-Original_Room.jpg"
+      }
      }
     ]
    }
@@ -1052,6 +1084,14 @@
     "warn": "The Viharbhuvan's own history page dates it to VS 1966 (1909–10) and states it was built on the original rock. The rock is a lifetime site; the building over it is not. The paduka, the Sumatinath idol and the paintings are all later installations. Separately, SRMD's 2023 Dharmayatra report names four further Idar sites — Mahakaleshwar, Chandaneshwar and Khokhanath Mahadev and Ramdwar Mandir — as places where He performed spiritual practices, but gives no lifetime detail; these are 2023 portrait installations at claimed sites.",
     "src": "Trust – Idar; Trust – Idar Ashram History; SRMD",
     "work": "",
+    "img": {
+     "src": "images/idar-hills.jpg",
+     "alt": "The Idar hills of the Aravalli range — the range, not Ghantiya Pahad itself",
+     "credit": "Nizil Shah",
+     "licence": "CC BY-SA 3.0",
+     "licence_url": "https://creativecommons.org/licenses/by-sa/3.0",
+     "source": "https://commons.wikimedia.org/wiki/File:Idar_hills.jpg"
+    },
     "sites": [
      {
       "name": "Pudhavi Sheela (the rock)",
@@ -1070,7 +1110,15 @@
       "addr": "Ghantiya Pahad, Idar 383430",
       "lat": 23.84302,
       "lng": 72.97533,
-      "pin": "Building"
+      "pin": "Building",
+      "img": {
+       "src": "images/idar-vihar-entrance.jpg",
+       "alt": "Entrance to Shrimad Rajchandra Vihar, Idar",
+       "credit": "Gazal world",
+       "licence": "CC BY-SA 4.0",
+       "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+       "source": "https://commons.wikimedia.org/wiki/File:Shrimad_Rajchandra_Vihar_Entrance_Get3.jpg"
+      }
      },
      {
       "name": "Sadguru Prasad (Shri Guru Mandir)",
@@ -1218,7 +1266,15 @@
       "name": "Shrimad Rajchandra Ashram, Dharampur (223 acres, Mohangadh hillock)",
       "status": "MEM",
       "note": "223 acres on the Mohangadh hillock. The modern ashram campus is at 20.54807, 73.19032 — a ticketed, built-up retreat centre of recent decades, recorded here for navigation only. Nothing ties that campus to the 1890s forest tract itself, so it is not used as the pin. Google Maps listing, research pass 1, 14 Sep 2026",
-      "addr": "Shrimad Rajchandra Marg, Dharampur 396050, Valsad district"
+      "addr": "Shrimad Rajchandra Marg, Dharampur 396050, Valsad district",
+      "img": {
+       "src": "images/dharampur-raj-sabhagruh.jpg",
+       "alt": "Raj Sabhagruh — part of the modern ashram complex, not the lifetime retreat",
+       "credit": "PIB India - Govt of Gujarat",
+       "licence": "CC0",
+       "licence_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+       "source": "https://commons.wikimedia.org/wiki/File:Raj_Sabhagruh_Dharampur.jpg"
+      }
      }
     ]
    }
@@ -1355,6 +1411,14 @@
     "warn": "",
     "src": "Trust – Nadiad/Uttarsanda",
     "work": "",
+    "img": {
+     "src": "images/uttarsanda-town.jpg",
+     "alt": "Uttarsanda town — a general view, not one of the sites",
+     "credit": "Jigarpatel2299",
+     "licence": "CC BY-SA 4.0",
+     "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+     "source": "https://commons.wikimedia.org/wiki/File:Utarsandha.jpg"
+    },
     "sites": [
      {
       "name": "Dhaneshwari Bungalow",
@@ -1399,7 +1463,7 @@
     "to": 1898,
     "phase": "retreat",
     "evidence": "A month-long stay at Navlakha nu Dehlu with extensive discourses, meditation in the Digambar posture at the Mahadev temple, and frequent visits to the old cremation ground.",
-    "warn": "Kheda district tourism lists the village's principal havelis as Vithalbhai Haveli and Gopaldas Haveli. 'Navlakha nu Dehlu' is the Trust's name and may be a local usage for one of them — worth confirming on the ground before it is used as a map label. A Google Maps listing 'Shrimad Rajchandra Mandir, Vaso' sits at 22.66274, 72.75636, near Ramji Mandir and Ambika Chowk, but nothing in it says which of the seven sites recorded here it is, or whether it is a modern shrine near all of them. Not attached to any of them. Google Maps listing, research pass 1, 14 Sep 2026 A Google Maps listing 'Shrimad Rajchandra Mandir, Vaso' sits at 22.66274, 72.75636, near Ramji Mandir and Ambika Chowk, but nothing in it says which of the seven sites recorded here it is, or whether it is a modern shrine near all of them. Not attached to any of them. Google Maps listing, research pass 1, 14 Sep 2026",
+    "warn": "Kheda district tourism lists the village's principal havelis as Vithalbhai Haveli and Gopaldas Haveli. 'Navlakha nu Dehlu' is the Trust's name and may be a local usage for one of them — worth confirming on the ground before it is used as a map label. A Google Maps listing 'Shrimad Rajchandra Mandir, Vaso' sits at 22.66274, 72.75636, near Ramji Mandir and Ambika Chowk, but nothing in it says which of the seven sites recorded here it is, or whether it is a modern shrine near all of them. Not attached to any of them. Google Maps listing, research pass 1, 14 Sep 2026 A Google Maps listing 'Shrimad Rajchandra Mandir, Vaso' sits at 22.66274, 72.75636, near Ramji Mandir and Ambika Chowk, but nothing in it says which of the seven sites recorded here it is, or whether it is a modern shrine near all of them. Google Maps listing, research pass 1, 14 Sep 2026",
     "src": "Trust – Vaso",
     "work": "",
     "sites": [

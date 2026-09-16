@@ -5,12 +5,15 @@ Sources of truth (edit these):
     data/places.csv     one row per place
     data/sites.csv      one row per site within a place
     data/register.json  the disputed and candidate entries
+    data/images.csv     pictures, keyed to a place or a site, with their credits
+    images/             the picture files themselves
 
 Generated (do not edit by hand):
     data/places.json    the same data as one document
     data/places.geojson standard GeoJSON, pinned places only
     index.html          the `const DATA = {...};` block is rewritten in place
     review.html         the reviewer's sheet, for the Gujarati and trust readings
+    not-found.md        everything still unplaced, and what has already been tried
 
 Run:  python build.py             rebuild
       python build.py --check     verify the generated files are up to date
@@ -23,7 +26,9 @@ import csv, json, math, re, sys, pathlib
 ROOT   = pathlib.Path(__file__).parent
 DATA   = ROOT / "data"
 INDEX  = ROOT / "index.html"
+IMAGES = ROOT / "images"
 REVIEW = ROOT / "review.html"
+NOTFOUND = ROOT / "not-found.md"
 
 PHASES = [
     ["childhood", "Vavania & childhood",       "1867–1883", "#6b5b95", "Childhood"],
@@ -52,12 +57,50 @@ def read_csv(path):
         return list(csv.DictReader(f))
 
 
+def read_images(errors):
+    """Pictures, keyed to a place or a site.
+
+    A photograph is publishable only on its licence's terms, so the credit and
+    the licence are required fields and the build fails without them. Nothing
+    here is sourced from the trusts' own sites: everything is freely licensed,
+    almost all of it from Wikimedia Commons.
+    """
+    path = DATA / "images.csv"
+    if not path.exists():
+        return {}, {}
+    for_place, for_site = {}, {}
+    for row in read_csv(path):
+        tt = row["target_type"].strip()
+        img = {k: row[k].strip() for k in
+               ("file", "alt", "credit", "licence", "licence_url", "source")}
+        where = f"images.csv {tt} {row['target_id']}"
+        if not (IMAGES / img["file"]).exists():
+            errors.append(f"{where}: images/{img['file']} is not in the repository")
+        for required in ("credit", "licence"):
+            if not img[required]:
+                errors.append(f"{where}: no {required} — a picture without one cannot be published")
+        entry = {"src": "images/" + img["file"], "alt": img["alt"], "credit": img["credit"],
+                 "licence": img["licence"], "licence_url": img["licence_url"],
+                 "source": img["source"]}
+        target = for_place if tt == "place" else for_site if tt == "site" else None
+        if target is None:
+            errors.append(f"{where}: target_type must be 'place' or 'site'")
+            continue
+        key = int(row["target_id"])
+        if key in target:
+            errors.append(f"{where}: a second image for the same {tt}; only one is rendered")
+        target[key] = entry
+    return for_place, for_site
+
+
 def build():
     errors = []
+    img_place, img_site = read_images(errors)
 
     sites_by_place = {}
     for row in read_csv(DATA / "sites.csv"):
         pid = int(row["place_id"])
+        sid = int(row["site_id"])
         status = row["structure_status"].strip()
         if status not in STATUSES:
             errors.append(f"site {row['site_id']}: unknown status {status!r}")
@@ -78,6 +121,8 @@ def build():
             site["pin"] = row.get("pin_confidence", "").strip()
         elif lat or lng:
             errors.append(f"site {row['site_id']}: only one of lat/lng given")
+        if sid in img_site:
+            site["img"] = img_site.pop(sid)
         sites_by_place.setdefault(pid, []).append(site)
 
     places = []
@@ -100,6 +145,8 @@ def build():
             errors.append(f"place {pid}: coordinates out of range")
         if pid not in sites_by_place:
             errors.append(f"place {pid} ({place['en']}): no rows in sites.csv")
+        if pid in img_place:
+            place["img"] = img_place.pop(pid)
         place["sites"] = sites_by_place.pop(pid, [])
 
         # A site belongs in its own town. Anything far outside it is a mistyped or
@@ -120,6 +167,10 @@ def build():
 
     for orphan in sites_by_place:
         errors.append(f"sites.csv references place_id {orphan}, which is not in places.csv")
+    for orphan in img_place:
+        errors.append(f"images.csv references place {orphan}, which is not in places.csv")
+    for orphan in img_site:
+        errors.append(f"images.csv references site {orphan}, which is not in sites.csv")
 
     if errors:
         for e in errors:
@@ -302,6 +353,78 @@ def render_review(data):
     return "\n".join(out) + "\n"
 
 
+def render_not_found(data):
+    """Everything the map cannot yet place, as a standing list.
+
+    Generated, so it cannot drift from the data the way a hand-kept list would.
+    """
+    places = data["places"]
+    sites = [(p, s) for p in places for s in p["sites"]]
+    unplaced = [(p, s) for p, s in sites if "lat" not in s]
+    unlocated_places = [p for p in places if p["lat"] is None]
+
+    L = []
+    L.append("# Still not found\n")
+    L.append("Generated by `build.py` from the research sources. Do not edit by hand — fix the CSVs.\n")
+    L.append(f"- **{len(unlocated_places)} of {len(places)} places** are documented but cannot be put on the map at all.")
+    L.append(f"- **{len(unplaced)} of {len(sites)} sites** have no coordinates of their own and are drawn "
+             f"at their town's centre.")
+    surviving = [(p, s) for p, s in unplaced if s["status"] == "ORIG"]
+    L.append(f"- Of those, **{len(surviving)} are recorded as still standing** — the ones a pilgrim could "
+             f"actually visit, if anyone knew where they were.\n")
+
+    if unlocated_places:
+        L.append("## Places that cannot be placed\n")
+        for p in unlocated_places:
+            L.append(f"**{p['en']}**" + (f" ({p['gu']})" if p["gu"] else "") + f" — {p['period']}. "
+                     f"Status: {p['pin']}.")
+            L.append(f"> {p['evidence']}")
+            if p["warn"]:
+                L.append(f">\n> *{p['warn']}*")
+            L.append("")
+
+    L.append("## Sites without a location\n")
+    L.append("Grouped by place. The status is what the sources say survives, which is a separate "
+             "question from whether anyone can say where it is.\n")
+    for p in places:
+        rows = [s for s in p["sites"] if "lat" not in s]
+        if not rows:
+            continue
+        where = (f"town pin {p['lat']:.4f}, {p['lng']:.4f}" if p["lat"] is not None
+                 else "no pin at all")
+        L.append(f"### {p['en']} — {len(rows)} of {len(p['sites'])} unplaced ({where})\n")
+        for s in rows:
+            line = f"- **{s['name']}** — *{STATUS_LABEL[s['status']].lower()}*"
+            if s.get("addr"):
+                line += f"\n  Published address: {s['addr']}"
+            if s["note"]:
+                first = re.split(r"(?<=[.?!])\s", s["note"])[0]
+                line += f"\n  {first}"
+            L.append(line)
+        L.append("")
+
+    L.append("## What has already been tried\n")
+    L.append("So that nobody spends the effort twice:\n")
+    L.append("- **OpenStreetMap and Overpass** — exhausted. Two Rajchandra-named features exist in the "
+             "whole of Gujarat, both hospitals. None of the ashrams, temples, houses, stepwells or "
+             "banyans is mapped, and Nominatim returns nothing for these site names.")
+    L.append("- **The trusts' own websites** — they publish postal addresses for a handful of sites, "
+             "all of which are recorded, and no coordinates anywhere.")
+    L.append("- **Google Maps and Places (pass 1)** — the avenue that worked. It pinned thirteen sites "
+             "and located Rajpur. What remains here is what it could not find.")
+    L.append("- **Wikimedia Commons** — swept for photographs. Eight freely licensed images exist and "
+             "are now in the map; nothing else of these places is there.\n")
+    L.append("Untried, in the order most likely to pay: Gujarati-language search; the full texts on "
+             "jainqq.org, particularly the Ardhashatabdi Smarak Granth and the Sachitra Jivan Darshan; "
+             "yatra accounts on blogs, YouTube and Instagram, where a video walking from a bus stand to "
+             "a house can identify a building on satellite imagery; Wikimapia and ISRO's Bhuvan; and "
+             "census and panchayat records for Hadmatiya.\n")
+    L.append("The named Kavitha landmarks — three banyans, a well, a field — are oral and local rather "
+             "than indexed anywhere, and will not be found by searching maps in any language. They need "
+             "someone who has walked the village.\n")
+    return "\n".join(L)
+
+
 def rendered(data, geojson):
     """The exact bytes each generated file should contain."""
     plain = {"phases": data["phases"], "places": data["places"]}
@@ -317,6 +440,7 @@ def rendered(data, geojson):
         DATA / "places.geojson": json.dumps(geojson, ensure_ascii=False, indent=1) + "\n",
         INDEX:                   html,
         REVIEW:                  render_review(data),
+        NOTFOUND:                render_not_found(data),
     }
 
 
