@@ -365,12 +365,22 @@ TRIED = [
      "located Rajpur. What remains below is what it could not find."),
     ("Wikimedia Commons", "swept for photographs. Eight freely licensed images exist and are now "
      "in the map; nothing else of these places is there."),
+    ("Gujarati-language search and the trusts' own prose (pass 2)", "it resolved Nadiad and the "
+     "Pudhavi Sheela, and it established that the Khambhat, Kavitha, Bharuch and Vaso sites are "
+     "described by the trusts in devotional prose with no street, pol name or landmark at all. "
+     "That is a finding, not a gap: those sites will not be located from anything published."),
+    ("Ahmedabad's municipal heritage register (pass 2)", "checked for the Aga Khan bungalow. It "
+     "lists no Aga Khan property, which is where it would be had the building survived and been "
+     "recognised."),
 ]
-UNTRIED = ("Gujarati-language search; the full texts on jainqq.org, particularly the Ardhashatabdi "
-           "Smarak Granth and the Sachitra Jivan Darshan; yatra accounts on blogs, YouTube and "
-           "Instagram, where a video walking from a bus stand to a house can identify a building on "
-           "satellite imagery; Wikimapia and ISRO's Bhuvan; and census and panchayat records for "
-           "Hadmatiya.")
+UNTRIED = ("yatra accounts on blogs, YouTube and Instagram, where a video walking from a bus stand "
+           "to a house can identify a building on satellite imagery; Wikimapia and ISRO's Bhuvan; "
+           "census and panchayat records for Hadmatiya; and OCR of the full biographies. That last "
+           "needs saying precisely: jainqq.org has no full-text search a fetch tool can query, and "
+           "serves its books as page images, so it only helps if you already know the page. Getting "
+           "value from it means downloading the PDFs — several are mirrored on archive.org — and "
+           "searching them locally. That is the right next step for Kavitha's named trees, the "
+           "Khambhat old-city sites and Hadmatiya's district.")
 ORAL = ("The named Kavitha landmarks - three banyans, a well, a field - are oral and local rather "
         "than indexed anywhere, and will not be found by searching maps in any language. They need "
         "someone who has walked the village.")

@@ -305,7 +305,7 @@
     {
      "name": "Aga Khan's Bungalow",
      "status": "UNID",
-     "note": "The Trust's register states the VS 1957 stay and publishes no address. Searched again for heritage surveys and Ismaili property records; nothing independent found. Genuinely unresolved. Google Maps listing, research pass 1, 14 Sep 2026"
+     "note": "The Trust's register states the VS 1957 stay and publishes no address. Pass 2 checked Ahmedabad Municipal Corporation's official heritage register, which lists no Aga Khan property at all — the most likely place to find it had the building survived and been recognised. Genuinely unresolved. Research pass 2, 16 Sep 2026"
     },
     {
      "name": "Lal Bungalow / Rajnagar Subodhak Pustakalay",
@@ -336,12 +336,12 @@
     {
      "name": "Residence of Shri Anupchand Malukchand",
      "status": "ORIG",
-     "note": "Anupchand requested Samadhi Maran of Him here"
+     "note": "Anupchand requested Samadhi Maran of Him here Checked in pass 2 against the Trust's Titthal-Dharampur-Bharuch page, which describes it in prose only — no street, pol name or landmark beyond the town. Research pass 2, 16 Sep 2026"
     },
     {
      "name": "Crematory frequented for meditation",
      "status": "ORIG",
-     "note": "A ground; exact point not pinned"
+     "note": "A ground; exact point not pinned Checked in pass 2 against the Trust's Titthal-Dharampur-Bharuch page, which describes it in prose only — no street, pol name or landmark beyond the town. Research pass 2, 16 Sep 2026"
     },
     {
      "name": "Shri Samali Vihar Jinmandir",
@@ -441,22 +441,22 @@
     {
      "name": "Shri Ambalalbhai's house and room",
      "status": "ORIG",
-     "note": "One of only two buildings the Trust calls original. A Google Maps listing 'Shrimad Rajchandra Raj Chhaya' at 3 Pirajpal Rd, Chudiwaal Chakla, Khambhat (22.31758, 72.61853) carries a review saying the place was consecrated by His presence, and sits in the right quarter of the old city — but it is not named for Ambalalbhai in any source found. Recorded as a candidate, not pinned. Google Maps listing, research pass 1, 14 Sep 2026"
+     "note": "One of only two buildings the Trust calls original. A Google Maps listing 'Shrimad Rajchandra Raj Chhaya' at 3 Pirajpal Rd, Chudiwaal Chakla, Khambhat (22.31758, 72.61853) carries a review saying the place was consecrated by His presence, and sits in the right quarter of the old city — but it is not named for Ambalalbhai in any source found. Recorded as a candidate, not pinned. Google Maps listing, research pass 1, 14 Sep 2026 Checked in pass 2 against the Trust's Ralej-Vadva-Khambhat page, which describes it in prose only — no street, pol name or landmark beyond the town. Research pass 2, 16 Sep 2026"
     },
     {
      "name": "Shri Subodhak Pustakalay",
      "status": "ORIG",
-     "note": "Founded on His own instruction during His lifetime; 18-day stay; no year published Searched by name on Google Maps in pass 1 and not found — expected for a named tree, well or field, which are local landmarks rather than indexed places. Gujarati-language and yatra-video search are the next avenue."
+     "note": "Founded on His own instruction during His lifetime; 18-day stay; no year published Searched by name on Google Maps in pass 1 and not found — expected for a named tree, well or field, which are local landmarks rather than indexed places. Gujarati-language and yatra-video search are the next avenue. Checked in pass 2 against the Trust's Ralej-Vadva-Khambhat page, which describes it in prose only — no street, pol name or landmark beyond the town. Research pass 2, 16 Sep 2026"
     },
     {
      "name": "Sthanakvasi Upashray, third floor",
      "status": "ORIG",
-     "note": "Where Lalluji Muni first met Him in solitude Searched by name on Google Maps in pass 1 and not found — expected for a named tree, well or field, which are local landmarks rather than indexed places. Gujarati-language and yatra-video search are the next avenue."
+     "note": "Where Lalluji Muni first met Him in solitude Searched by name on Google Maps in pass 1 and not found — expected for a named tree, well or field, which are local landmarks rather than indexed places. Gujarati-language and yatra-video search are the next avenue. Checked in pass 2 against the Trust's Ralej-Vadva-Khambhat page, which describes it in prose only — no street, pol name or landmark beyond the town. Research pass 2, 16 Sep 2026"
     },
     {
      "name": "Jain temple near Ambalalbhai's house",
      "status": "ORIG",
-     "note": "Frequented by Him Searched by name on Google Maps in pass 1 and not found — expected for a named tree, well or field, which are local landmarks rather than indexed places. Gujarati-language and yatra-video search are the next avenue."
+     "note": "Frequented by Him Searched by name on Google Maps in pass 1 and not found — expected for a named tree, well or field, which are local landmarks rather than indexed places. Gujarati-language and yatra-video search are the next avenue. Checked in pass 2 against the Trust's Ralej-Vadva-Khambhat page, which describes it in prose only — no street, pol name or landmark beyond the town. Research pass 2, 16 Sep 2026"
     },
     {
      "name": "Shri Chotalal Kapurchand house",
@@ -574,7 +574,7 @@
    "to": 1895,
    "phase": "business",
    "evidence": "Named in the VS 1951 travel entry between Sayla and Dharmaj.",
-   "warn": "Fifteen census villages named Hadmatiya were found across Rajkot, Morbi, Jamnagar, Devbhumi Dwarka, Amreli, Bhavnagar, Junagadh, Gir Somnath, Sabarkantha and Mahisagar districts. None is in Surendranagar or Anand, so the travel route does not disambiguate it. The Tankara (Morbi district) candidate is the most plausible on geography alone, but that is inference, not evidence. Both Wikipedia articles titled Hadmatiya contradict themselves on district. Do not pin this until a Gujarati primary source names the district. OpenStreetMap holds only three nodes of the name in Gujarat — Hadmatiya in Paddhari taluka, Rajkot district (22.43352, 70.48005), which also has a railway station of that name on the Rajkot–Wankaner line; a Hadmatiya at 24.64183, 72.68557 in the north; and a Hadmatia locality at 20.71343, 70.87421. None of the three is attested as His Hadmatiya, and the census count is far higher than three, so this only narrows where to look next. Research pass 1 found no source naming the district; the three OpenStreetMap candidates remain the only ones.",
+   "warn": "Fifteen census villages named Hadmatiya were found across Rajkot, Morbi, Jamnagar, Devbhumi Dwarka, Amreli, Bhavnagar, Junagadh, Gir Somnath, Sabarkantha and Mahisagar districts. None is in Surendranagar or Anand, so the travel route does not disambiguate it. The Tankara (Morbi district) candidate is the most plausible on geography alone, but that is inference, not evidence. Both Wikipedia articles titled Hadmatiya contradict themselves on district. Do not pin this until a Gujarati primary source names the district. OpenStreetMap holds only three nodes of the name in Gujarat — Hadmatiya in Paddhari taluka, Rajkot district (22.43352, 70.48005), which also has a railway station of that name on the Rajkot–Wankaner line; a Hadmatiya at 24.64183, 72.68557 in the north; and a Hadmatia locality at 20.71343, 70.87421. None of the three is attested as His Hadmatiya, and the census count is far higher than three, so this only narrows where to look next. Research pass 1 found no source naming the district; the three OpenStreetMap candidates remain the only ones. Gujarati-language search in pass 2 surfaced nothing beyond this; the three OpenStreetMap candidates remain the only ones.",
    "src": "jainQQ chronology",
    "work": "",
    "sites": [
@@ -711,32 +711,32 @@
     {
      "name": "Residence of Shri Zaverchand Sheth",
      "status": "ORIG",
-     "note": "Private residence where Ambalalbhai cooked and served Him"
+     "note": "Private residence where Ambalalbhai cooked and served Him Checked in pass 2 against the Trust's Kavitha page, which describes it in prose only — no street, pol name or landmark beyond the town. Research pass 2, 16 Sep 2026"
     },
     {
      "name": "Gamot Vad (banyan)",
      "status": "ORIG",
-     "note": "He sat and preached beneath it Searched by name on Google Maps in pass 1 and not found — expected for a named tree, well or field, which are local landmarks rather than indexed places. Gujarati-language and yatra-video search are the next avenue."
+     "note": "He sat and preached beneath it Searched by name on Google Maps in pass 1 and not found — expected for a named tree, well or field, which are local landmarks rather than indexed places. Gujarati-language and yatra-video search are the next avenue. Checked in pass 2 against the Trust's Kavitha page, which describes it in prose only — no street, pol name or landmark beyond the town. Research pass 2, 16 Sep 2026"
     },
     {
      "name": "Vijali Mata no Vad (banyan)",
      "status": "ORIG",
-     "note": "Meditation site Searched by name on Google Maps in pass 1 and not found — expected for a named tree, well or field, which are local landmarks rather than indexed places. Gujarati-language and yatra-video search are the next avenue."
+     "note": "Meditation site Searched by name on Google Maps in pass 1 and not found — expected for a named tree, well or field, which are local landmarks rather than indexed places. Gujarati-language and yatra-video search are the next avenue. Checked in pass 2 against the Trust's Kavitha page, which describes it in prose only — no street, pol name or landmark beyond the town. Research pass 2, 16 Sep 2026"
     },
     {
      "name": "Dhainia no Vad (banyan)",
      "status": "ORIG",
-     "note": "Meditation site Searched by name on Google Maps in pass 1 and not found — expected for a named tree, well or field, which are local landmarks rather than indexed places. Gujarati-language and yatra-video search are the next avenue."
+     "note": "Meditation site Searched by name on Google Maps in pass 1 and not found — expected for a named tree, well or field, which are local landmarks rather than indexed places. Gujarati-language and yatra-video search are the next avenue. Checked in pass 2 against the Trust's Kavitha page, which describes it in prose only — no street, pol name or landmark beyond the town. Research pass 2, 16 Sep 2026"
     },
     {
      "name": "Mithuji no Kuvo (well)",
      "status": "ORIG",
-     "note": "Meditation site Searched by name on Google Maps in pass 1 and not found — expected for a named tree, well or field, which are local landmarks rather than indexed places. Gujarati-language and yatra-video search are the next avenue."
+     "note": "Meditation site Searched by name on Google Maps in pass 1 and not found — expected for a named tree, well or field, which are local landmarks rather than indexed places. Gujarati-language and yatra-video search are the next avenue. Checked in pass 2 against the Trust's Kavitha page, which describes it in prose only — no street, pol name or landmark beyond the town. Research pass 2, 16 Sep 2026"
     },
     {
      "name": "Shamal Dosa nu Khetar (field)",
      "status": "ORIG",
-     "note": "Meditation site Searched by name on Google Maps in pass 1 and not found — expected for a named tree, well or field, which are local landmarks rather than indexed places. Gujarati-language and yatra-video search are the next avenue."
+     "note": "Meditation site Searched by name on Google Maps in pass 1 and not found — expected for a named tree, well or field, which are local landmarks rather than indexed places. Gujarati-language and yatra-video search are the next avenue. Checked in pass 2 against the Trust's Kavitha page, which describes it in prose only — no street, pol name or landmark beyond the town. Research pass 2, 16 Sep 2026"
     },
     {
      "name": "Shrimad Rajchandra Mandir",
@@ -846,13 +846,13 @@
    "phase": "retreat",
    "evidence": "On the evening of Aso Vad Ekam, VS 1952 — 22 October 1896, the day after Sharad Purnima — He composed the Shri Atmasiddhi Shastra, all 142 verses, at a single sitting, at Sobhagbhai's request, with Ambalalbhai holding the lantern. Revisited in VS 1957 (1900–01). This is, by most reckonings, the most significant single location of His life.",
    "warn": "Wikipedia's Atma Siddhi article cites 31-3-1888. That is the date of the underlying letter to Lalluji Maharaj, not the composition date. Do not conflate them.",
-   "src": "Trust – Nadiad/Uttarsanda; SRMD life",
+   "src": "Trust – Nadiad/Uttarsanda; SRMD life; SRMD Nadiad centre page (pass 2)",
    "work": "Shri Atmasiddhi Shastra — 142 verses at a single sitting, 22 October 1896",
    "sites": [
     {
      "name": "Nana Kumbhdev Mahadev",
      "status": "ORIG",
-     "note": "Where the Atmasiddhi Shastra was composed, so the pin matters more here than anywhere. Two candidate temples were found and they contradict each other: a Mission-built 'Shri Atmasiddhishastra Rachnabhoomi' shrine on Nana Kumbhnath Road (22.68827, 72.86778), which by its own name commemorates the spot rather than being the 1896 temple; and an older 'Mota Kumbhnath Mahadev' nearby claiming no connection to Him. Mota means big and Nana small, suggesting a pair. Left unpinned until a primary source names which. Google Maps listing, research pass 1, 14 Sep 2026"
+     "note": "The spot is now located, but this temple is not. SRMD places the composition at the site its Rachnabhoomi memorial occupies — see that entry, which is pinned — while no source says which of Nadiad's two Kumbhnath temples, Nana or Mota, bore the name in 1896. A pilgrim can be sent to the right ground; the building is still unidentified, so it is not pinned. Research pass 2, 16 Sep 2026"
     },
     {
      "name": "Shri Dahyabhai Desai's house",
@@ -862,10 +862,11 @@
     {
      "name": "Shri Atmasiddhi Shastra Rachnabhoomi (memorial marking the composition)",
      "status": "MEM",
-     "note": "A Mission-built shrine on Nana Kumbhnath Road whose name means composition-ground and which commemorates the writing of the Atmasiddhi Shastra on 22 October 1896. Added in pass 1 as a visitable memorial; it is not the 1896 temple itself, and which of the two Kumbhnath temples that was remains open — see the note against Nana Kumbhdev Mahadev. Google Maps listing, research pass 1, 14 Sep 2026",
+     "note": "SRMD's own centre page states that this memorial stands at the sanctified site of the creation of the Shri Atmasiddhi Shastra, 22 October 1896 — built on the spot rather than merely named for the event, which is why it is pinned as a building. The coordinate is the one found in pass 1 and the address is the Mission's own. Research pass 2, 16 Sep 2026",
+     "addr": "Shri Atmasiddhishastra Rachnabhoomi, near Ipcowala Hall, Nana Kumbhnath Road, Nadiad 387001",
      "lat": 22.68827,
      "lng": 72.86778,
-     "pin": "Locality",
+     "pin": "Building",
      "img": {
       "src": "images/nadiad-rachnabhoomi-room.jpg",
       "alt": "The room the Rachnabhoomi presents as where the Atmasiddhi Shastra was composed",
@@ -945,7 +946,7 @@
    "phase": "retreat",
    "evidence": "Four documented visits: first in VS 1952 (1895–96) for ten days; again in Vaishakh VS 1953 (April–May 1897) staying with Sobhagbhai; a three-month retreat beginning Magshar Sud 2, VS 1955 (Nov/Dec 1898); and a further twelve days later that year. On a giant rock He recited the first gatha of the third chapter of the Uttaradhyayan Sutra and the whole Dravyasangrah to seven monks, and declared the slab Pudhavi Sheela — Siddhsheela, the abode of the liberated.",
    "warn": "The Viharbhuvan's own history page dates it to VS 1966 (1909–10) and states it was built on the original rock. The rock is a lifetime site; the building over it is not. The paduka, the Sumatinath idol and the paintings are all later installations. Separately, SRMD's 2023 Dharmayatra report names four further Idar sites — Mahakaleshwar, Chandaneshwar and Khokhanath Mahadev and Ramdwar Mandir — as places where He performed spiritual practices, but gives no lifetime detail; these are 2023 portrait installations at claimed sites.",
-   "src": "Trust – Idar; Trust – Idar Ashram History; SRMD",
+   "src": "Trust – Idar; Trust – Idar Ashram History; SRMD; Trust – Idar Ashram History (pass 2)",
    "work": "",
    "img": {
     "src": "images/idar-hills.jpg",
@@ -959,12 +960,20 @@
     {
      "name": "Pudhavi Sheela (the rock)",
      "status": "ORIG",
-     "note": "The rock itself; the Viharbhuvan was later built directly upon it"
+     "note": "The Trust's Idar Ashram History states that the Viharbhuvan is situated upon the same rock upon which He sat. That places the rock at the ashram's own coordinate, found in pass 1. Research pass 2, 16 Sep 2026",
+     "addr": "Ghantiya Pahad, Idar 383430",
+     "lat": 23.84302,
+     "lng": 72.97533,
+     "pin": "Building"
     },
     {
      "name": "Bhurabawa ni Gufa (cave)",
      "status": "ORIG",
-     "note": "He stayed in the cave about six weeks; cave, lake and cremation ground"
+     "note": "He stayed in the cave about six weeks. The Trust describes it as one of several caves in the same rocky hillside and does not distinguish it from the rock, so it carries the hill's coordinate rather than one of its own. Research pass 2, 16 Sep 2026",
+     "addr": "Ghantiya Pahad, Idar 383430",
+     "lat": 23.84302,
+     "lng": 72.97533,
+     "pin": "Locality — the same hillside, not a distinct point"
     },
     {
      "name": "Shrimad Rajchandra Vihar Bhavan / Nutan Jain Mandir",
@@ -1230,20 +1239,20 @@
     {
      "name": "Dhaneshwari Bungalow",
      "status": "ORIG",
-     "note": "The other building the Trust calls original. Searched for by name on Google Maps and not found; the only Him-linked pin in Uttarsanda is the Vankshetra mandir, which is a different thing under a different name. Still not located. Google Maps listing, research pass 1, 14 Sep 2026"
+     "note": "One of only two buildings the Trust calls original; He stayed about a month. Searched again in pass 2 against the Trust's own Nadiad-Uttarsanda page, which names the bungalow and publishes no address for it. Not the Vanshetra pin, which is a different thing. Still not located. Research pass 2, 16 Sep 2026"
     },
     {
      "name": "Shrimad Vankshetra Mandir",
      "status": "MEM",
-     "note": "Listed as 'Shrimad Rajchandra Mandir, Vanshetra, Uttarsanda', with a review describing about a month and a half of sadhana here. Note this is the Vankshetra site and not the Dhaneshwari Bungalow, which was searched for separately and not found. Google Maps listing, research pass 1, 14 Sep 2026",
+     "note": "Pass 1 pinned a Google Maps listing named 'Shrimad Rajchandra Mandir, Vanshetra'. Pass 2 corrects what that pin can be said to be: the Trust's Nadiad-Uttarsanda page separates the Vankshetra forest tract from a lake memorial building it places 500 m away, and the listing is one of those two without saying which. It is certainly not the Dhaneshwari Bungalow. Confidence lowered from building to locality accordingly. Research pass 2, 16 Sep 2026",
      "lat": 22.66183,
      "lng": 72.8827,
-     "pin": "Building"
+     "pin": "Locality — one of two nearby sites, not resolved between them"
     },
     {
      "name": "The small lake and its memorial building",
      "status": "MEM",
-     "note": "The memorial is 500 m from Vankshetra; the lake itself is the original feature"
+     "note": "The Trust places this 500 m from the Vankshetra site. The pin recorded against the Vankshetra entry may in fact be this building — the two are not distinguished in any source found. Research pass 2, 16 Sep 2026"
     }
    ]
   },
@@ -1269,27 +1278,27 @@
     {
      "name": "Navlakha nu Dehlu",
      "status": "ORIG",
-     "note": "The Trust records a stay of almost a month in VS 1954"
+     "note": "The Trust records a stay of almost a month in VS 1954 Checked in pass 2 against shrimad.com's Vaso page, which describes it in prose only — no street, pol name or landmark beyond the town. Research pass 2, 16 Sep 2026"
     },
     {
      "name": "Mahadev Temple",
      "status": "ORIG",
-     "note": "He meditated here in Digambar style"
+     "note": "He meditated here in Digambar style Checked in pass 2 against shrimad.com's Vaso page, which describes it in prose only — no street, pol name or landmark beyond the town. Research pass 2, 16 Sep 2026"
     },
     {
      "name": "Old crematorium",
      "status": "ORIG",
-     "note": "Frequented for meditation"
+     "note": "Frequented for meditation Checked in pass 2 against shrimad.com's Vaso page, which describes it in prose only — no street, pol name or landmark beyond the town. Research pass 2, 16 Sep 2026"
     },
     {
      "name": "Digambar temple",
      "status": "ORIG",
-     "note": "Frequented by Him"
+     "note": "Frequented by Him Checked in pass 2 against shrimad.com's Vaso page, which describes it in prose only — no street, pol name or landmark beyond the town. Research pass 2, 16 Sep 2026"
     },
     {
      "name": "Shwetambar temple",
      "status": "ORIG",
-     "note": "Frequented by Him"
+     "note": "Frequented by Him Checked in pass 2 against shrimad.com's Vaso page, which describes it in prose only — no street, pol name or landmark beyond the town. Research pass 2, 16 Sep 2026"
     },
     {
      "name": "Sthanakvasi Upashray",

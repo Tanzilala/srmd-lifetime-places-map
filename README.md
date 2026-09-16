@@ -161,13 +161,25 @@ produced it. `research-brief.md` is the standing brief: it states the inclusion 
 what has already been ruled out so the effort is not spent twice, and names the avenues still
 untried.
 
+**Pass 2 — Gujarati search and the trusts' own prose, 16 September 2026.** Two advances and one
+correction. SRMD states that its Rachnabhoomi memorial stands *on* the site where the Atmasiddhi
+Shastra was composed, and the Trust states that its Idar ashram sits *on* the rock He sat on — a
+source saying a memorial occupies the spot is the one case where a memorial's location is the
+spot's, so both are pinned as buildings. The correction was to pass 1: the Uttarsanda pin cannot be
+told apart from a lake memorial 500 m away, so its confidence dropped from building to locality.
+Most usefully, it closed a door — the Khambhat, Kavitha, Bharuch and Vaso sites are described by the
+trusts in prose with no street, pol or landmark at all, so they will not be found in anything
+published.
+
 **Pass 1 — Google Maps and Places, 14 September 2026.** The avenue the brief predicted would pay,
 and it did: Google's user-contributed places carry Indian temples, ashrams and even individual
 houses that OpenStreetMap does not have at all. It pinned thirteen sites, several with reviews
 independently corroborating the association, and located Rajpur. It also correctly declined the
 Dharampur trap — the modern ashram campus is not the 1890s forest tract — and flagged three
 contradictions rather than smoothing them over. Still untried: Gujarati-language search,
-jainqq.org full texts, yatra blogs and video, Wikimapia, Bhuvan, census records.
+yatra blogs and video, Wikimapia, Bhuvan, census records, and OCR of the full biographies —
+jainqq.org has no fetchable full-text search and serves page images, so that one is a
+download-and-search job rather than a browsing one.
 
 ## Still open
 
@@ -175,23 +187,21 @@ jainqq.org full texts, yatra blogs and video, Wikimapia, Bhuvan, census records.
   holds only three of the name, and the census count is far higher; the coordinates of all three
   are recorded in the entry's caution note as a starting point, not as an answer. Pass 1 found no
   source naming the district.
-- Which temple at Nadiad is the Nana Kumbhdev Mahadev where the Atmasiddhi Shastra was composed.
-  Two candidates sit near each other and contradict: a Mission-built Rachnabhoomi shrine that by
-  its own name commemorates the spot rather than being the 1896 temple, and an older Mota
-  Kumbhnath Mahadev claiming no connection. The memorial is pinned as a memorial; the temple is
-  not. This is the most significant single location on the map, so it is also the one least worth
-  guessing at.
+- Which of Nadiad's two Kumbhnath temples bore the name in 1896. The composition site itself is
+  settled — SRMD places it where its Rachnabhoomi stands — so a pilgrim can be sent to the right
+  ground; only the building is still unidentified.
 - Ambalalbhai's house at Khambhat and the Dhaneshwari Bungalow at Uttarsanda — the only two
-  buildings the Trust calls original, and neither is located. Khambhat has a strong candidate in a
-  listing named Raj Chhaya, in the right quarter of the old city but not named for Ambalalbhai in
-  any source found. Uttarsanda's Vankshetra mandir is a different building under a different name.
+  buildings the Trust calls original, and neither is located. Khambhat has a candidate in a listing
+  named Raj Chhaya, in the right quarter of the old city but not named for Ambalalbhai in any
+  source found. At Uttarsanda the Trust names the bungalow and publishes no address, and the pin
+  found there belongs to one of two other nearby sites.
 - A precise pin for the Sir Framji Cawasji Institute, Mumbai — site of the Shatavadhan. Narrowed
   from the Zaveri Bazaar anchor about 1 km away to a street-level pin on Anandilal Podar Marg,
   Dhobi Talao, where the building survives as Framji Cowasji Hall. The entrance itself is still
   unverified.
 - Whether the Aga Khan bungalow in Ahmedabad still stands, and where it is. The Trust's own
   register attests the VS 1957 stay and publishes no address; nothing independent was found.
-- Site-level coordinates generally: 75 of the 89 sites still inherit their town's pin.
+- Site-level coordinates generally: 73 of the 89 sites still inherit their town's pin.
   OpenStreetMap is a dead end for these — it holds two Rajchandra-named features in all of
   Gujarat, both hospitals — but Google Places is not, and further passes should keep going there
   and into Gujarati-language sources. Where a body publishes an address it is recorded, and where
